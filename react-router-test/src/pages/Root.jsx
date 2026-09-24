@@ -8,13 +8,7 @@ function RootPage() {
 
    return (
       <div>
-         {/* Временно закомментируй сам тег: */}
          <Header />
-
-         <div>
-            Root is it
-         </div>
-
          <main>
             <Outlet />
          </main>

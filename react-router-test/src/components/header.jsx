@@ -5,7 +5,6 @@ import favLogo from '../assets/fav.svg';
 import cartLogo from '../assets/cart.svg';
 import logo from '../assets/logo.svg';
 import { Link, useLocation } from 'react-router-dom';
-import { NavLink } from 'react-router-dom';
 
 
 
@@ -45,9 +44,9 @@ function Header() {
                   <img src={logo} alt=""></img>
                </div>
                <div className="buttons-menu">
-                  <a className="menu-button"><img className="img-class" src={userLogo} alt="" /></a>
-                  <a className="menu-button"><img className="img-class" src={favLogo} alt="" /></a>
-                  <a className="menu-button"><img className="img-class" src={cartLogo} alt="" /></a>
+                  <a href='#' className="menu-button"><img className="img-class" src={userLogo} alt="" /></a>
+                  <a href='#' className="menu-button"><img className="img-class" src={favLogo} alt="" /></a>
+                  <a href='#' className="menu-button"><img className="img-class" src={cartLogo} alt="" /></a>
                </div>
             </div>
          </div>

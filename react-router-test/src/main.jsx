@@ -3,10 +3,10 @@ import { createRoot } from 'react-dom/client'
 import './main.scss'
 import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom'
 import ErrorPage from './pages/ErrorPage.jsx'
-import HomePage from './pages/Home.jsx'
 import AboutPage from './pages/About.jsx'
 import MenuPage from './pages/Menu.jsx'
 import ReservationPage from './pages/Reservations.jsx'
+import HomePage from './pages/Home.jsx'
 import RootPage from './pages/Root.jsx'
 
 
@@ -22,7 +22,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'home',
-        element: <HomePage />,
+        element: <HomePage />
       },
       {
         path: 'about',

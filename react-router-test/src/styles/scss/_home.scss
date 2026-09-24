@@ -1,0 +1,97 @@
+@use "variables" as *;
+
+.block-body {
+   width: 100%;
+   background-image: url("../../assets/back.png");
+   background-size: cover; // картинка заполняет весь блок, обрезаясь при необходимости
+   background-position: 50% 50%; // акцент картинки смещаем вправо, как на макете
+   background-repeat: no-repeat; // на макете указано 1920×712
+   min-height: 712px; // на макете указано 1920×712
+
+   position: relative;
+
+   &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      // градиент, а не сплошная заливка — слева темнее, справа прозрачнее,
+      // именно это создаёт эффект как на макете
+      z-index: 1;
+   }
+
+   .body-container {
+      position: relative;
+      z-index: 2; // выше и фона, и оверлея
+      max-width: 1000px;
+      margin: 0 auto;
+
+      .body-text-block {
+         .block-title {
+            font-size: 50px;
+            font-family: $f-family;
+            color: white;
+            font-weight: 800;
+            line-height: 130%;
+            letter-spacing: 0%;
+            margin-bottom: 30px;
+         }
+
+         .block-subtitle {
+            font-size: 17px;
+            font-family: $f-family;
+            color: white;
+            font-weight: 300;
+            margin-bottom: 30px;
+            line-height: 130%;
+         }
+
+         .block-body-btns {
+            display: flex;
+            flex-direction: row;
+            gap: 20px;
+
+            .btn-left {
+               background-color: #c7a17a;
+               color: white;
+               letter-spacing: 2px;
+               border-radius: 10px;
+               font-size: 15px;
+               font-family: $f-family;
+               font-weight: medium;
+               width: 200px;
+               height: 50px;
+               transition-duration: 0.5s;
+
+               &:hover {
+                  transform: scale(1.05);
+                  transition-duration: 0.5s;
+               }
+            }
+
+            .btn-right {
+               background-color: transparent;
+               font-size: 15px;
+               color: white;
+               border: 1px solid #666681;
+               font-family: $f-family;
+               font-weight: medium;
+               border-radius: 10px;
+               letter-spacing: 2px;
+               width: 200px;
+               height: 50px;
+               transition-duration: 0.5s;
+
+               &:hover {
+                  transform: scale(1.05);
+                  transition-duration: 0.5s;
+               }
+            }
+         }
+      }
+   }
+
+   .body-text-block {
+      padding-top: 200px;
+      width: 50%;
+   }
+}
