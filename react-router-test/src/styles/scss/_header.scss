@@ -27,8 +27,12 @@
             justify-content: space-between;
             align-items: center;
 
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 0 auto;
+         }
+
+         .active-btn {
+            color: #ffcc00 !important;
          }
 
          .tel-block {
@@ -64,7 +68,7 @@
    .header-block__bottom {
       min-height: 60px;
       align-items: center;
-      max-width: 1000px;
+      max-width: 1200px;
       width: 100%;
       margin: 0 auto;
       display: flex;
@@ -80,7 +84,6 @@
          margin: 0;
 
          .links {
-            // Ищем именно тот класс, который вы указали в функции isActive
             .btns-nav {
                color: white;
                background-color: transparent;

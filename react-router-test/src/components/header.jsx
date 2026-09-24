@@ -24,7 +24,7 @@ function Header() {
                <div className="block-top__block">
                   <div className="buttons-container">
                      <button className="ru-btn btns">RU</button>
-                     <button className="en-btn btns active">EN</button>
+                     <button className="en-btn btns active-btn">EN</button>
                   </div>
 
 

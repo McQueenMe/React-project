@@ -1,0 +1,62 @@
+@use "../scss/variables" as *;
+
+.card {
+   display: block;
+   background-color: #14141d;
+   width: calc((100% - 48px) / 3);
+   border-radius: 8px;
+   transition-duration: 0.5s;
+
+   &:hover {
+      transform: scale(1.02);
+      transition-duration: 0.5s;
+      background-color: #22222f;
+   }
+
+   .card__logo {
+      margin-bottom: 30px;
+      margin: 30px 50px;
+      text-align: center;
+      .img-logo {
+         margin: 10px 30px;
+      }
+   }
+
+   .card__subtitle {
+      font-size: 24px;
+      font-weight: 800;
+      color: white;
+      font-family: $f-family;
+      margin: 30px 20px;
+   }
+
+   .card__price-block {
+      margin: 20px 20px 20px 20px;
+      text-align: center;
+      align-items: center;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+
+      .card__price {
+         font-size: 18px;
+         font-family: $f-family;
+         font-weight: 200;
+         color: white;
+      }
+
+      .card__action {
+         margin-left: -40%;
+         font-size: 18px;
+         font-family: $f-family;
+         font-weight: 200;
+         color: #818181;
+         text-decoration: line-through;
+      }
+
+      .card__heart {
+         max-width: 24px;
+         max-height: 27px;
+      }
+   }
+}
