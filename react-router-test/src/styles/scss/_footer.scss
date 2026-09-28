@@ -1,0 +1,112 @@
+@use "variables" as *;
+
+.fot-container {
+   background-color: $bg-color;
+   border-top: 1px solid #32323d;
+
+   .footer-block {
+      padding-top: 50px;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+
+      .footer-left {
+         display: flex;
+         width: 33%;
+         align-items: center;
+         flex-direction: row;
+         align-items: center;
+         text-align: center;
+
+         .img-logo {
+            height: 80px !important;
+         }
+
+         .footer-text {
+            color: #f8dabf;
+            font-family: $f-family;
+            font-weight: 600;
+            font-size: 20px;
+         }
+      }
+
+      .footer-menu {
+         width: 33%;
+         .left-menu {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #f8dabf;
+            gap: 30px;
+            margin: 30px 0px 50px 0px;
+            text-align: center;
+
+            .links a {
+               color: white;
+               font-size: 15px;
+               text-decoration: none;
+
+               &.active {
+                  color: #ffcc00 !important;
+               }
+
+               &:hover {
+                  color: #ffcc00;
+               }
+            }
+         }
+      }
+
+      .footer-right {
+         width: 33%;
+         display: flex;
+         flex-direction: column;
+         justify-content: center;
+         gap: 30px;
+         align-items: center;
+         text-align: center;
+         color: white;
+         font-size: 15px;
+
+         .footer-contacts {
+            color: white;
+
+            &.active {
+               color: #ffcc00 !important;
+            }
+
+            &:hover {
+               color: #ffcc00;
+            }
+         }
+
+         .footer-police {
+            color: white;
+            &.active {
+               color: #ffcc00 !important;
+            }
+
+            &:hover {
+               color: #ffcc00;
+            }
+         }
+      }
+   }
+}
+
+// например, в _navigation.scss (и подключить через @use в main.scss)
+/* .left-menu {
+   display: flex;
+   gap: 24px;
+
+   .links a {
+      color: #f8dabf;
+      text-decoration: none;
+
+      &.active {
+         color: #c98a5e;
+      }
+   }
+} */
