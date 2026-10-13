@@ -4,10 +4,10 @@ import './main.scss'
 import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom'
 import ErrorPage from './pages/ErrorPage.jsx'
 import AboutPage from './pages/About.jsx'
-import MenuPage from './pages/Menu.jsx'
 import ReservationPage from './pages/Reservations.jsx'
 import HomePage from './pages/Home.jsx'
 import RootPage from './pages/Root.jsx'
+import CatalogPage from './pages/Catalog.jsx'
 
 
 const router = createBrowserRouter([
@@ -29,8 +29,8 @@ const router = createBrowserRouter([
         element: <AboutPage />,
       },
       {
-        path: 'menu',
-        element: <MenuPage />,
+        path: 'catalog',
+        element: <CatalogPage />
       },
       {
         path: 'reservation',

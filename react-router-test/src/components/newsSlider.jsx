@@ -8,6 +8,7 @@ function NewsSlider({ news }) {
    const [currentIndex, setCurrentIndex] = useState(0);
    const intervalRef = useRef(null);
 
+
    const maxIndex = news.length - CARDS_PER_VIEW; // последняя позиция, где ещё влезает 3 карточки
 
    const goNext = () => {

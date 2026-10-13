@@ -89,7 +89,7 @@
 .second-section {
    padding-top: 100px;
    background-color: black;
-   padding-bottom: 100px;
+   padding-bottom: 50px;
 
    .block-container {
       display: flex;
@@ -135,10 +135,9 @@
 
 //section 3 -----------------------------------------------------------------------------------
 
-.catalog {
+.catalog-block {
    background-color: black;
-   padding-top: 100px;
-   padding-bottom: 100px;
+   padding-top: 50px;
 
    .catalog-block {
       max-width: 1200px;

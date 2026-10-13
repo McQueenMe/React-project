@@ -7,6 +7,7 @@ import Footer from '../components/footer';
 function RootPage() {
 
 
+
    return (
       <div>
          <Header />

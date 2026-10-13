@@ -6,28 +6,38 @@ import '../styles/components-styles/_card.scss'
 
 
 function Card({ element }) {
+   if (!element) return null;
 
-   console.log(element)
+   const defaultSize = element.sizes[0]; // берём первый размер как дефолтный на карточке каталога
+
    return (
-      <div className="catalog-card card">
+      <a href='#' className="catalog-card card">
          <div className="card__logo">
-            <img className='img-logo' src={element.img} alt="" />
+            <img className="img-logo" src={element.img} alt={element.name} />
+         </div>
+         <div className="card__title">
+            {element.name}
          </div>
          <div className="card__subtitle">
-            {element.name}
+            <div className="card__subtitle__type">{element.type} </div>
+            <h2 className="card__subtitle__type"> · </h2>
+            <div className="card__subtitle__country">{element.country}</div>
          </div>
          <div className="card__price-block">
             <div className="card__price">
-               {element.price}
+               ${defaultSize.price}
             </div>
             <div className="card__action">
-               29.99
-            </div>
-            <div className="card__heart">
-               <a href="#"><img src={favImg} alt="" /> </a>
+               ${defaultSize.oldPrice}
             </div>
          </div>
-      </div>
+
+         <div className="card-footer">
+            <button className="card-footer__btn">ADD TO CART</button>
+            <a href='#' className="card-footer__emodzi">♡</a>
+         </div>
+
+      </a>
    );
 }
 

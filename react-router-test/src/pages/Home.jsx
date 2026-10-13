@@ -7,8 +7,9 @@ import { coffee } from '../data/coffee-obj';
 
 function HomePage() {
    const [news, setNews] = useState([]);
+   const [coffeeArray, setCoffeeArray] = useState([...coffee].slice(0, 3));
 
-   console.log(coffee)
+   console.log(coffeeArray)
 
 
 
@@ -67,6 +68,7 @@ function HomePage() {
 
    return (
       <>
+
          <section id="1" className="first-section">
             <div className="block-body">
                <div className="body-container">
@@ -101,14 +103,14 @@ function HomePage() {
                </div>
             </div>
          </section>
-         <section id='3' className='third-section catalog'>
+         <section id='3' className='third-section catalog-block'>
             <div className="catalog-block container">
                <div className='catalog__title'>
                   CATALOG
                </div>
                <div className="catalog-cards-block">
                   <div className="catalog-cards-block">
-                     {coffee.map((el) => (
+                     {coffeeArray.map((el) => (
                         <Card key={el.name} element={el} />
                      ))}
                   </div>
@@ -118,7 +120,7 @@ function HomePage() {
                </div>
             </div>
          </section>
-         <section id='4' className='third-section catalog'>
+         <section id='4' className='four-section catalog-block'>
             <div className="catalog-block container">
                <div className='catalog__title'>
                   NEWS

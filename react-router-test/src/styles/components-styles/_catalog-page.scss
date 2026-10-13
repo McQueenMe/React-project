@@ -1,0 +1,138 @@
+@use "../scss/variables" as *;
+
+.catalog {
+   background-color: #0b0b10;
+   // .catalog__intro
+
+   &__intro {
+      margin-bottom: 30px !important;
+   }
+
+   // .catalog__title
+
+   &__title {
+      font-size: 40px;
+      font-family: $f-family;
+      font-weight: 700;
+      color: white;
+   }
+
+   // .catalog__subtitle
+
+   &__subtitle {
+      font-size: 14px;
+      max-width: 40%;
+      margin-top: 15px;
+      line-height: 1.6;
+      letter-spacing: 1.2;
+      font-weight: 600;
+      color: #9a9aa5;
+   }
+
+   // .catalog__toolbar
+
+   &__toolbar {
+      display: flex;
+      flex-direction: row;
+      padding: 20px 0px;
+      border-top: 1px solid #26262f;
+      border-bottom: 1px solid #26262f;
+   }
+
+   // .catalog__search
+
+   &__search {
+      padding: 12px 16px;
+      min-width: 70%;
+      background-color: #14141d;
+      border-radius: 5px;
+   }
+
+   // .catalog__search-input
+
+   &__search-input {
+      font-size: 14px;
+      font-family: $f-family;
+      background-color: #14141d;
+      width: 100%;
+      color: #9a9aa5;
+   }
+
+   // .catalog__toolbar-right
+
+   &__toolbar-right {
+   }
+
+   // .catalog__count
+
+   &__count {
+   }
+
+   // .catalog__sort-toggle
+
+   &__sort-toggle {
+   }
+
+   // .catalog__filters
+
+   &__filters {
+   }
+
+   // .catalog__filters-inner
+
+   &__filters-inner {
+   }
+
+   // .catalog__clear-btn
+
+   &__clear-btn {
+   }
+}
+
+.filter-group {
+   // .filter-group__title
+
+   &__title {
+   }
+
+   // .filter-group__option
+
+   &__option {
+   }
+
+   // .filter-group__checkbox
+
+   &__checkbox {
+   }
+
+   // .filter-group__line
+
+   &__line {
+   }
+
+   // .filter-group__price-inputs
+
+   &__price-inputs {
+   }
+
+   // .filter-group__price-input
+
+   &__price-input {
+   }
+
+   // .filter-group__price-input--start
+
+   &__price-input--start {
+   }
+
+   // .filter-group__price-input--end
+
+   &__price-input--end {
+   }
+}
+._container {
+   max-width: 1200px;
+   margin: 0 auto;
+}
+.filter-group--price {
+}
