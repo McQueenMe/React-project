@@ -10,7 +10,7 @@ export const coffee = [
       name: 'Lavazza Black',
       img: blackImg,
       country: 'Italy',
-      type: 'Medium',
+      type: 'Medium roast',
       description: 'A bold, full-bodied espresso blend with notes of dark chocolate and roasted nuts. Perfect for those who love an intense morning kick.',
       sizes: [
          { size: '250g', price: 12.99, oldPrice: 15.99 },
@@ -22,8 +22,8 @@ export const coffee = [
       id: 2,
       name: 'Grand Coffee',
       img: grandImg,
-      country: 'Italy',
-      type: 'Medium',
+      country: 'Brazil',
+      type: 'Dark roast',
       description: 'A smooth medium roast with a balanced flavor profile — hints of caramel and toasted almond, easy on the palate any time of day.',
       sizes: [
          { size: '250g', price: 9.99, oldPrice: 12.99 },
@@ -35,8 +35,8 @@ export const coffee = [
       id: 3,
       name: 'Pull Coffee',
       img: pulImg,
-      country: 'Italy',
-      type: 'Medium',
+      country: 'Ethiopia',
+      type: 'Light roast',
       description: 'A light, aromatic roast with bright citrus undertones and a clean, crisp finish. Ideal for pour-over or filter brewing.',
       sizes: [
          { size: '250g', price: 5.99, oldPrice: 7.99 },
@@ -49,7 +49,7 @@ export const coffee = [
       name: 'Lavazza Red',
       img: lavJng,
       country: 'Italy',
-      type: 'Medium',
+      type: 'Medium roast',
       description: 'A rich, aromatic blend with warm spice notes and a velvety crema — a classic Italian favorite for espresso lovers.',
       sizes: [
          { size: '250g', price: 5.99, oldPrice: 8.99 },

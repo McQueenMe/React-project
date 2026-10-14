@@ -1,0 +1,40 @@
+@use "../scss/variables" as *;
+
+.card-block {
+   display: flex;
+   flex-direction: row;
+   gap: 5px;
+   padding: 10px 10px;
+   border: 1px solid $border-btm;
+   background-color: $bg-cart-color;
+   border-radius: 20px;
+   color: white;
+
+   align-items: center;
+   text-align: center;
+
+   transition-duration: 0.2s;
+
+   &:hover {
+      transform: scale(1.1);
+      transition-duration: 0.2s;
+   }
+
+   &__text {
+      font-family: $f-family;
+      font-weight: 400;
+      font-size: 15px;
+   }
+
+   &__close {
+      color: gray;
+      margin-left: 5px;
+      padding-top: 1px;
+      font-size: 15px;
+   }
+}
+
+.chek {
+   background: #c98a5e;
+   border-color: #c98a5e;
+}

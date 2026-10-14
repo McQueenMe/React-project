@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import coffeeImg from '../assets/coffee.png';
 import Card from '../components/card';
-import NewsCard from '../components/newsCard';
 import NewsSlider from '../components/newsSlider';
 import { coffee } from '../data/coffee-obj';
+import { Link, useLocation } from 'react-router-dom';
 
 function HomePage() {
    const [news, setNews] = useState([]);
@@ -12,6 +12,9 @@ function HomePage() {
    console.log(coffeeArray)
 
 
+   const location = useLocation();
+
+   const isActive = (path) => location.pathname === path ? 'btns-nav active' : 'btns-nav'
 
 
    /* 
@@ -116,7 +119,9 @@ function HomePage() {
                   </div>
                </div>
                <div className="view-more ">
-                  <button className='btn-right'>VIEW MORE</button>
+                  <button className='btn-right'>
+                     <Link to="/catalog" className={isActive('/catalog')} style={{ color: 'white' }}>VIEW MORE</Link>
+                  </button>
                </div>
             </div>
          </section>

@@ -1,0 +1,65 @@
+.sort-dropdown {
+   position: relative; // точка отсчёта для абсолютно позиционированного списка
+   display: inline-block;
+
+   &__trigger {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background-color: #14141d;
+      border: 1px solid #26262f;
+      color: #ffffff;
+      padding: 12px 16px;
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 14px;
+      cursor: pointer;
+      transition: border-color 0.2s;
+
+      &:hover,
+      &:focus-visible {
+         border-color: #c98a5e;
+         outline: none;
+      }
+   }
+
+   &__arrow {
+      flex-shrink: 0;
+      opacity: 0.6;
+      transition: transform 0.2s;
+
+      &--open {
+         transform: rotate(180deg);
+      }
+   }
+
+   &__list {
+      position: absolute;
+      top: calc(100% + 8px);
+      right: 0;
+      min-width: 100%;
+      background-color: #14141d;
+      border: 1px solid #26262f;
+      border-radius: 8px;
+      overflow: hidden;
+      z-index: 10; // поверх остального контента
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+   }
+
+   &__item {
+      padding: 12px 16px;
+      font-size: 14px;
+      color: #ffffff;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: background-color 0.2s;
+
+      &:hover {
+         background-color: #22222f;
+      }
+
+      &--active {
+         color: #c98a5e;
+      }
+   }
+}
