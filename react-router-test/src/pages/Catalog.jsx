@@ -119,7 +119,7 @@ function CatalogPage() {
 
    function clearAllFilters() {
       setSearchTerm(''); // 
-      setOptions({ roast: [], origin: [], size: [], price_start: 0, price_end: Infinity });
+      setOptions({ roast: [], origin: [], size: [], price_start: 0, price_end: 0 });
       setFiltersData(FILTERDATA);
    }
 
@@ -132,15 +132,44 @@ function CatalogPage() {
 
       const matchesSize = options.size.length === 0 || options.size.includes(item.size[0].size) || options.size.includes(item.size[1].size) || options.size.includes(item.size[2].size);
 
-      const matchPriceLeft = options.price_start === 0 || options.price_start < item.size[0].price;
+      // Левый фильтр: если цена не введена (0, null, пустой массив), то пропускаем все. 
+      // Иначе — цена кофе должна быть больше или равна введенной.
+      const matchPriceLeft =
+         !options.price_start ||
+         options.price_start === 0 ||
+         item.size[0].price >= options.price_start;
 
-      const matchPriceRight = options.price_end === 0 || options.price_end > item.size[0].price;
+      // Правый фильтр: если цена конца не введена (0, null, пустой массив, Infinity), то пропускаем все.
+      // Иначе — цена кофе должна быть меньше или равна введенной.
+      const matchPriceRight =
+         !options.price_end ||
+         options.price_end === 0 ||
+         item.size[0].price <= options.price_end;
+
 
 
 
 
       return matchesSearch && matchesRoast && matchesOrigin && matchesSize && matchPriceLeft && matchPriceRight;
    });
+
+
+   const sortedCoffeeProducts = [...filteredCoffeeProducts].sort((a, b) => {
+      const priceA = a.size?.[0]?.price || 0;
+      const priceB = b.size?.[0]?.price || 0;
+
+      if (sortBy === 'price-asc') {
+         return priceA - priceB;
+      }
+      if (sortBy === 'price-desc') {
+         return priceB - priceA;
+      }
+      if (sortBy === 'name-asc') {
+         return a.name.localeCompare(b.name);
+      }
+      return 0;
+   });
+
 
    return (
       <div className="catalog">
@@ -179,8 +208,8 @@ function CatalogPage() {
                   <h2 className="filter-group__title">PRICE RANGE</h2>
                   <div className="filter-group__line"></div>
                   <div className="filter-group__price-inputs">
-                     <input onChange={addOptions} id='price-start' type="text" className="filter-group__price-input filter-group__price-input--start" placeholder="$5" />
-                     <input onChange={addOptions} id='price-end' type="text" className="filter-group__price-input filter-group__price-input--end" placeholder="$40" />
+                     <input onChange={addOptions} id='price-start' type="text" className="filter-group__price-input filter-group__price-input--start" placeholder="$5" value={options.price_start || ''} />
+                     <input onChange={addOptions} id='price-end' type="text" className="filter-group__price-input filter-group__price-input--end" placeholder="$40" value={options.price_end || ''} />
                   </div>
                </div>
                <button className="catalog__clear-btn" onClick={clearAllFilters}>Clear all filters</button>
@@ -193,10 +222,12 @@ function CatalogPage() {
                   ))}
                </div>
                <div className="right-part__cards-area">
-                  {filteredCoffeeProducts.map((el) => (
+                  {/* 🔥 Вместо filteredCoffeeProducts выводим sortedCoffeeProducts */}
+                  {sortedCoffeeProducts.map((el) => (
                      <Card key={el.name} element={el} />
                   ))}
                </div>
+
             </div>
          </section>
       </div>
