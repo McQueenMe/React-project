@@ -8,7 +8,7 @@ import '../styles/components-styles/_card.scss'
 function Card({ element }) {
    if (!element) return null;
 
-   const defaultSize = element.sizes[0]; // берём первый размер как дефолтный на карточке каталога
+   const defaultSize = element.size[0]; // берём первый размер как дефолтный на карточке каталога
 
    return (
       <a href='#' className="catalog-card card">
@@ -19,9 +19,9 @@ function Card({ element }) {
             {element.name}
          </div>
          <div className="card__subtitle">
-            <div className="card__subtitle__type">{element.type} </div>
+            <div className="card__subtitle__type">{element.roast} </div>
             <h2 className="card__subtitle__type"> · </h2>
-            <div className="card__subtitle__country">{element.country}</div>
+            <div className="card__subtitle__country">{element.origin}</div>
          </div>
          <div className="card__price-block">
             <div className="card__price">
