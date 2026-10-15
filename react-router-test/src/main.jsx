@@ -8,6 +8,7 @@ import ReservationPage from './pages/Reservations.jsx'
 import HomePage from './pages/Home.jsx'
 import RootPage from './pages/Root.jsx'
 import CatalogPage from './pages/Catalog.jsx'
+import ProductPage from './pages/Product.jsx'
 
 
 const router = createBrowserRouter([
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
       {
         path: 'catalog',
         element: <CatalogPage />
+      },
+      {
+        path: 'catalog/:id',
+        element: <ProductPage />
       },
       {
         path: 'reservation',

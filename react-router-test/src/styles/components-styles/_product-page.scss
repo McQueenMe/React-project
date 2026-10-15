@@ -1,0 +1,252 @@
+@use "../scss/variables" as *;
+
+.body-container-card {
+   background-color: $bg-color-page;
+}
+.section-1 {
+   padding-top: 60px;
+   display: flex;
+   flex-direction: row;
+   gap: 20px;
+
+   &__left-block {
+      display: flex;
+      flex-direction: column;
+      width: 50%;
+   }
+
+   &__right-block {
+      display: flex;
+      flex-direction: column;
+
+      width: 50%;
+   }
+}
+.left-block {
+   display: flex;
+   flex-direction: column;
+
+   &__big-foto {
+      width: 100%;
+      aspect-ratio: 1 / 1; // всегда квадрат, что бы ни лежало внутри
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      border: 1px solid rgb(35, 35, 46);
+      border-radius: 12px;
+      background-color: rgb(18, 18, 26);
+   }
+
+   &__big-foto-photo {
+      width: 100%;
+      height: 100%;
+      object-fit: contain; // фото целиком, без обрезки и искажений
+   }
+
+   &__another-fotos {
+      display: flex;
+      gap: 12px;
+      margin-top: 14px;
+
+      &__foto {
+         width: 88px;
+         height: 88px;
+         padding: 8px;
+         border: 1px solid rgb(35, 35, 46);
+         border-radius: 8px;
+         background-color: rgb(18, 18, 26);
+
+         img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+         }
+      }
+   }
+}
+.right-block {
+   &__roast {
+      &_country {
+         display: flex;
+         flex-direction: row;
+         gap: 10px;
+         font-size: 13px;
+         font-weight: 600;
+         font-family: $f-family;
+         text-transform: uppercase;
+         color: rgb(201, 138, 94);
+         font-weight: 600;
+      }
+   }
+
+   &__title {
+      margin: 10px 0px 18px;
+      font-size: 48px;
+      font-weight: 700;
+      line-height: 1.05;
+      font-family: $f-family;
+      color: white;
+   }
+
+   &__price-block {
+      display: flex;
+      flex-direction: row;
+      align-items: end;
+
+      gap: 20px;
+   }
+
+   &__subtitle {
+      margin: 30px 0px 20px 0px;
+      color: rgb(206, 206, 216);
+      font-family: $f-family;
+      font-weight: 300;
+      line-height: 1.65;
+      font-size: 16px;
+
+      &__text {
+         color: rgb(141, 141, 153);
+         font-size: 12px;
+         letter-spacing: 1.2px;
+         text-transform: uppercase;
+         font-family: $f-family;
+         margin: 10px 0px;
+      }
+   }
+
+   &__package-size-block {
+   }
+
+   &__count-block {
+      align-items: center;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      flex-direction: row;
+      gap: 10px;
+
+      &__add-to-cart-btn {
+         font-family: inherit;
+         height: 47px;
+         padding: 0px 40px;
+         border-radius: 8px;
+         background: rgb(201, 138, 94);
+         border-width: medium;
+         border-style: none;
+         border-color: currentcolor;
+         border-image: none;
+         color: rgb(20, 20, 29);
+         font-size: 14px;
+         font-weight: 700;
+         letter-spacing: 1px;
+         text-transform: uppercase;
+      }
+
+      &__favourite-btn {
+         width: 50px;
+         height: 50px;
+         border-radius: 50%;
+         background: none;
+         border: 1px solid rgb(35, 35, 46);
+         color: rgb(244, 244, 246);
+         font-size: 18px;
+      }
+   }
+
+   &__information-block {
+      margin-top: 32px;
+      border-top: 1px solid rgb(35, 35, 46);
+      padding-top: 20px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px 24px;
+      font-size: 14px;
+      margin-bottom: 50px;
+
+      font-family: $f-family;
+
+      &__boxik {
+         color: white;
+         display: flex;
+         flex-direction: column;
+
+         &__title {
+            color: rgb(141, 141, 153);
+            margin-bottom: 10px;
+         }
+      }
+   }
+}
+.card {
+   &__subtitle {
+   }
+
+   &__price {
+      font-size: 38px;
+      font-weight: 700;
+      color: white;
+      font-family: $f-family;
+   }
+
+   &__action {
+      color: rgb(141, 141, 153);
+      text-decoration: line-through;
+      font-size: 18px;
+
+      padding-bottom: 5px;
+   }
+
+   &__actia {
+      font-size: 14px;
+      color: black;
+      margin: 8px 0px 2px 0px;
+      font-weight: 600;
+      padding: 6px 10px;
+      border-radius: 5px;
+      background-color: rgb(201, 138, 94);
+   }
+}
+.package-size-block {
+   display: flex;
+   flex-direction: row;
+   gap: 10px;
+   margin-bottom: 20px;
+
+   &__button {
+      background-color: $bg-color-page;
+      padding: 14px 25px;
+      color: white;
+      border: 1px solid rgb(35, 35, 46);
+      border-radius: 7px;
+
+      &:hover {
+         background-color: rgb(27, 27, 38);
+         border: 1px solid rgb(201, 138, 94);
+      }
+   }
+}
+.block-count {
+   padding: 10px 10px;
+   font-size: 16px;
+   border-radius: 7px;
+   border: 1px solid rgb(35, 35, 46);
+
+   &__minus {
+      color: wheat;
+      padding: 5px 8px;
+      background-color: $bg-color-page;
+   }
+
+   &__count {
+      color: wheat;
+      padding: 5px 8px;
+      background-color: $bg-color-page;
+   }
+
+   &__plus {
+      color: wheat;
+      padding: 5px 8px;
+      background-color: $bg-color-page;
+   }
+}

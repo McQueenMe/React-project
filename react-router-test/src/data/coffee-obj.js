@@ -2,11 +2,8 @@ import blackImg from '../assets/lavazza1.png';
 import lavJng from '../assets/lavazza-blue.png';
 import grandImg from '../assets/bonney1.png';
 import pulImg from '../assets/pul.png';
-import redImg from '../assets/lavazza2.svg';
-import lavazzaBlue from '../assets/product1.svg';
-
-
-
+import redImg from '../assets/lavazza3.png';
+import lavazzaBlue from '../assets/product2.png';
 
 export const coffee = [
    {
@@ -14,12 +11,25 @@ export const coffee = [
       name: 'Lavazza Black',
       img: blackImg,
       origin: 'Italy',
-      roast: 'Medium roast',
+      roast: 'Dark roast',
       description: 'A bold, full-bodied espresso blend with notes of dark chocolate and roasted nuts. Perfect for those who love an intense morning kick.',
-      size: [
-         { size: '250g', price: 12.99, oldPrice: 15.99 },
-         { size: '500g', price: 22.99, oldPrice: 27.99 },
-         { size: '1kg', price: 39.99, oldPrice: 47.99 },
+      brand: 'Lavazza',
+      beanType: 'Arabica & Robusta',
+      form: 'Whole beans',
+      intensity: 4, // шкала 1–5
+      acidity: 'Low',
+      body: 'Full',
+      flavorNotes: ['Dark chocolate', 'Roasted nuts'],
+      brewMethods: ['Espresso', 'Moka pot'],
+      rating: 4.7,
+      reviews: 128,
+      inStock: true,
+      badge: null, // 'New' | 'Sale' | null
+      sku: 'LVZ-BLK-001',
+      size: [ // скидка 10%
+         { size: '250g', price: 9.00, oldPrice: 10.00 },
+         { size: '500g', price: 16.20, oldPrice: 18.00 },
+         { size: '1kg', price: 28.80, oldPrice: 32.00 },
       ],
    },
    {
@@ -27,12 +37,25 @@ export const coffee = [
       name: 'Grand Coffee',
       img: grandImg,
       origin: 'Brazil',
-      roast: 'Dark roast',
+      roast: 'Medium roast',
       description: 'A smooth medium roast with a balanced flavor profile — hints of caramel and toasted almond, easy on the palate any time of day.',
-      size: [
-         { size: '250g', price: 9.99, oldPrice: 12.99 },
-         { size: '500g', price: 17.99, oldPrice: 22.99 },
-         { size: '1kg', price: 31.99, oldPrice: 38.99 },
+      brand: 'Grand Coffee',
+      beanType: 'Arabica',
+      form: 'Whole beans',
+      intensity: 3,
+      acidity: 'Medium',
+      body: 'Medium',
+      flavorNotes: ['Caramel', 'Toasted almond'],
+      brewMethods: ['Espresso', 'Drip', 'French press'],
+      rating: 4.5,
+      reviews: 86,
+      inStock: true,
+      badge: 'Sale',
+      sku: 'GRD-COF-002',
+      size: [ // скидка 20%
+         { size: '250g', price: 8.80, oldPrice: 11.00 },
+         { size: '500g', price: 16.00, oldPrice: 20.00 },
+         { size: '1kg', price: 28.80, oldPrice: 36.00 },
       ],
    },
    {
@@ -42,10 +65,23 @@ export const coffee = [
       origin: 'Ethiopia',
       roast: 'Light roast',
       description: 'A light, aromatic roast with bright citrus undertones and a clean, crisp finish. Ideal for pour-over or filter brewing.',
-      size: [
-         { size: '250g', price: 5.99, oldPrice: 7.99 },
-         { size: '500g', price: 10.99, oldPrice: 13.99 },
-         { size: '1kg', price: 19.99, oldPrice: 24.99 },
+      brand: 'Pull Coffee',
+      beanType: 'Arabica',
+      form: 'Whole beans',
+      intensity: 2,
+      acidity: 'High',
+      body: 'Light',
+      flavorNotes: ['Bright citrus', 'Crisp finish'],
+      brewMethods: ['Pour-over', 'Filter', 'AeroPress'],
+      rating: 4.6,
+      reviews: 54,
+      inStock: true,
+      badge: 'New',
+      sku: 'PLL-COF-003',
+      size: [ // скидка 15%
+         { size: '250g', price: 11.90, oldPrice: 14.00 },
+         { size: '500g', price: 21.25, oldPrice: 25.00 },
+         { size: '1kg', price: 38.25, oldPrice: 45.00 },
       ],
    },
    {
@@ -54,11 +90,24 @@ export const coffee = [
       img: lavJng,
       origin: 'Italy',
       roast: 'Medium roast',
-      description: 'A rich, aromatic blend with warm spice notes and a velvety crema — a classic Italian favorite for espresso lovers.',
-      size: [
-         { size: '250g', price: 5.99, oldPrice: 8.99 },
-         { size: '500g', price: 10.99, oldPrice: 15.99 },
-         { size: '1kg', price: 18.99, oldPrice: 26.99 },
+      description: 'A medium-roasted Italian blend of arabica and robusta with warm spice and cocoa notes and a velvety crema. A classic for espresso and moka pot lovers.',
+      brand: 'Lavazza',
+      beanType: 'Arabica & Robusta',
+      form: 'Whole beans',
+      intensity: 3,
+      acidity: 'Medium',
+      body: 'Full',
+      flavorNotes: ['Warm spice', 'Cocoa'],
+      brewMethods: ['Espresso', 'Moka pot'],
+      rating: 4.8,
+      reviews: 203,
+      inStock: true,
+      badge: 'Sale',
+      sku: 'LVZ-RED-004',
+      size: [ // скидка 25%
+         { size: '250g', price: 9.00, oldPrice: 12.00 },
+         { size: '500g', price: 16.50, oldPrice: 22.00 },
+         { size: '1kg', price: 30.00, oldPrice: 40.00 },
       ],
    },
    {
@@ -67,11 +116,24 @@ export const coffee = [
       img: redImg,
       origin: 'Brazil',
       roast: 'Dark roast',
-      description: 'A rich, aromatic blend with warm spice notes and a velvety crema — a classic Italian favorite for espresso lovers.',
-      size: [
-         { size: '250g', price: 8.99, oldPrice: 10.99 },
-         { size: '500g', price: 12.99, oldPrice: 18.99 },
-         { size: '1kg', price: 15.99, oldPrice: 26.99 },
+      description: 'A dark-roasted espresso blend built on Brazilian beans: low acidity, a heavy body and deep notes of warm spice and dark cocoa under a thick crema.',
+      brand: 'Settecento',
+      beanType: 'Arabica & Robusta',
+      form: 'Whole beans',
+      intensity: 5,
+      acidity: 'Low',
+      body: 'Full',
+      flavorNotes: ['Warm spice', 'Dark cocoa'],
+      brewMethods: ['Espresso'],
+      rating: 4.4,
+      reviews: 41,
+      inStock: false, // пример товара «нет в наличии» для вёрстки такого состояния
+      badge: null,
+      sku: 'STC-ESP-005',
+      size: [ // скидка 15%
+         { size: '250g', price: 6.80, oldPrice: 8.00 },
+         { size: '500g', price: 11.90, oldPrice: 14.00 },
+         { size: '1kg', price: 21.25, oldPrice: 25.00 },
       ],
    },
    {
@@ -80,11 +142,24 @@ export const coffee = [
       img: lavazzaBlue,
       origin: 'Ethiopia',
       roast: 'Light roast',
-      description: 'A rich, aromatic blend with warm spice notes and a velvety crema — a classic Italian favorite for espresso lovers.',
-      size: [
-         { size: '250g', price: 5.99, oldPrice: 8.99 },
-         { size: '500g', price: 10.99, oldPrice: 15.99 },
-         { size: '1kg', price: 18.99, oldPrice: 26.99 },
+      description: 'A light-roasted Ethiopian arabica with soft honey sweetness and a gentle hint of spice. Smooth and easy-drinking, ideal for drip, pour-over or moka pot.',
+      brand: 'Lavazza',
+      beanType: 'Arabica',
+      form: 'Whole beans',
+      intensity: 2,
+      acidity: 'Medium',
+      body: 'Light',
+      flavorNotes: ['Honey', 'Soft spice'],
+      brewMethods: ['Drip', 'Pour-over', 'Moka pot'],
+      rating: 4.3,
+      reviews: 37,
+      inStock: true,
+      badge: 'New',
+      sku: 'LVZ-BLU-006',
+      size: [ // скидка 20%
+         { size: '250g', price: 7.20, oldPrice: 9.00 },
+         { size: '500g', price: 12.80, oldPrice: 16.00 },
+         { size: '1kg', price: 23.20, oldPrice: 29.00 },
       ],
    },
 ];
