@@ -105,6 +105,23 @@
    // .catalog__clear-btn
 
    &__clear-btn {
+      background-color: $bg-cart-color;
+      padding: 10px 10px;
+      width: 60%;
+      align-items: center;
+      text-align: center;
+      color: rgb(210, 210, 128);
+      font-family: $f-family;
+      font-weight: 500;
+      font-size: 14px;
+      transition-duration: 0.2s;
+      border-radius: 5px;
+      border: 1px solid rgb(73, 73, 73);
+
+      &:hover {
+         transition-duration: 0.1s;
+         transform: scale(1.01);
+      }
    }
 }
 
@@ -163,21 +180,40 @@
    // .filter-group__price-inputs
 
    &__price-inputs {
+      display: flex;
+      flex-direction: row;
+      gap: 10px;
+      width: 100%;
    }
 
    // .filter-group__price-input
 
    &__price-input {
+      color: white;
    }
 
    // .filter-group__price-input--start
 
    &__price-input--start {
+      border: 1px solid rgb(73, 73, 73);
+      border-radius: 5px;
+      width: 40%;
+      background-color: $bg-cart-color;
+      padding: 10px 20px;
+      font-size: 14px;
+      font-family: $f-family;
    }
 
    // .filter-group__price-input--end
 
    &__price-input--end {
+      border: 1px solid rgb(73, 73, 73);
+      border-radius: 5px;
+      width: 40%;
+      background-color: $bg-cart-color;
+      padding: 10px 20px;
+      font-size: 14px;
+      font-family: $f-family;
    }
 }
 ._container {

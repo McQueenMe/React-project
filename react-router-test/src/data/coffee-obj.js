@@ -63,7 +63,7 @@ export const coffee = [
    },
    {
       id: 5,
-      name: 'Settecento espresso ricco',
+      name: 'Settecento espresso',
       img: redImg,
       origin: 'Brazil',
       roast: 'Dark roast',
