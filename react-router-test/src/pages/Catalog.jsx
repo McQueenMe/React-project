@@ -38,7 +38,6 @@ function CatalogPage() {
    }, [filtersData]);
 
 
-   // Функция клика по кнопкам фильтра (теперь занимается ТОЛЬКО стейтом кнопок)
    function addOptions(e) {
       e.preventDefault();
 
@@ -119,25 +118,18 @@ function CatalogPage() {
    }
 
    function clearAllFilters() {
-      setSearchTerm(''); // Очищаем текстовый поиск
-      setOptions({ roast: [], origin: [], size: [], price_start: 0, price_end: Infinity }); // Сбрасываем выбранные опции и цены
-      setFiltersData(FILTERDATA); // Гасим все галочки в чекбоксах
+      setSearchTerm(''); // 
+      setOptions({ roast: [], origin: [], size: [], price_start: 0, price_end: Infinity });
+      setFiltersData(FILTERDATA);
    }
 
-   // =========================================================================
-   // 🔥 ГЛАВНАЯ МАГИЯ: ЕДИНАЯ ФИЛЬТРАЦИЯ «НА ЛЕТУ» ДЛЯ ВСЕГО
-   // =========================================================================
    const filteredCoffeeProducts = coffee.filter((item) => {
-      // 1. Проверяем текстовый поиск (имя должно включатьsearchTerm)
       const matchesSearch = item.name.toLowerCase().includes(searchTerm.toLowerCase());
 
-      // 2. Проверяем фильтр по обжарке (если в массиве пусто — подходят все, если нет — только совпадения)
       const matchesRoast = options.roast.length === 0 || options.roast.includes(item.roast);
 
-      // 3. Проверяем фильтр по стране
       const matchesOrigin = options.origin.length === 0 || options.origin.includes(item.origin);
 
-      // 4. Проверяем фильтр по размеру пакета
       const matchesSize = options.size.length === 0 || options.size.includes(item.size[0].size) || options.size.includes(item.size[1].size) || options.size.includes(item.size[2].size);
 
       const matchPriceLeft = options.price_start === 0 || options.price_start < item.size[0].price;
@@ -147,7 +139,6 @@ function CatalogPage() {
 
 
 
-      // Карточка проходит, только если ВСЕ 4 условия вернули true
       return matchesSearch && matchesRoast && matchesOrigin && matchesSize && matchPriceLeft && matchPriceRight;
    });
 
@@ -162,7 +153,6 @@ function CatalogPage() {
 
          <section className="catalog__toolbar _container">
             <div className="catalog__search">
-               {/* 🔥 Привязываем инпут к стейту searchTerm */}
                <input
                   type="text"
                   className="catalog__search-input"
@@ -172,7 +162,6 @@ function CatalogPage() {
                />
             </div>
             <div className="catalog__toolbar-right">
-               {/* Выводим количество отфильтрованных товаров динамически */}
                <div className="catalog__count">
                   {filteredCoffeeProducts.length} products
                </div>
@@ -204,7 +193,6 @@ function CatalogPage() {
                   ))}
                </div>
                <div className="right-part__cards-area">
-                  {/* 🔥 Рендерим наш автоматически отфильтрованный массив */}
                   {filteredCoffeeProducts.map((el) => (
                      <Card key={el.name} element={el} />
                   ))}
