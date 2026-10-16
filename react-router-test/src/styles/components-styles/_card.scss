@@ -114,6 +114,7 @@
       justify-content: space-between;
       margin: 20px;
       margin-top: 10px;
+      align-items: center;
       border-top: 1px solid #32323d;
 
       &__btn {
@@ -137,8 +138,10 @@
          margin-top: 20px;
          border-radius: 50px;
          font-size: 12px;
+         text-align: center;
+         align-items: center;
          border: 1px solid #232330;
-         padding: 15px;
+         padding: 12px;
          color: white;
          font-weight: 200;
 
@@ -148,4 +151,8 @@
          }
       }
    }
+}
+
+.like {
+   background-color: rgb(255, 43, 43);
 }

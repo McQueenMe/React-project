@@ -1,9 +1,14 @@
-import blackImg from '../assets/lavazza1.png';
-import lavJng from '../assets/lavazza-blue.png';
+import blackImg from '../assets/lav-grey/lavazza1.png';
+import lavJng from '../assets/lavazza-blue/lavazza-blue.png';
 import grandImg from '../assets/bonney1.png';
 import pulImg from '../assets/pul.png';
-import redImg from '../assets/lavazza3.png';
-import lavazzaBlue from '../assets/product2.png';
+import redImg from '../assets/espresso-black/lavazza3-best1.png';
+import lavazzaBlue from '../assets/lavazza-red/product2.png';
+
+import espresso_black_4 from '../assets/espresso-black/lavazza-espresso-4.jpg';
+import espresso_black_5 from '../assets/espresso-black/lavazza-best.png';
+import espresso_black_front from '../assets/espresso-black/lavazza-espresso-front.png';
+
 
 export const coffee = [
    {
@@ -16,7 +21,7 @@ export const coffee = [
       brand: 'Lavazza',
       beanType: 'Arabica & Robusta',
       form: 'Whole beans',
-      intensity: 4, // шкала 1–5
+      intensity: 4,
       acidity: 'Low',
       body: 'Full',
       flavorNotes: ['Dark chocolate', 'Roasted nuts'],
@@ -24,13 +29,20 @@ export const coffee = [
       rating: 4.7,
       reviews: 128,
       inStock: true,
-      badge: null, // 'New' | 'Sale' | null
+      badge: null,
       sku: 'LVZ-BLK-001',
-      size: [ // скидка 10%
-         { size: '250g', price: 9.00, oldPrice: 10.00 },
-         { size: '500g', price: 16.20, oldPrice: 18.00 },
-         { size: '1kg', price: 28.80, oldPrice: 32.00 },
+      liked: false,
+
+      size: [
+         { size: '250g', price: 9.00, oldPrice: 10.00 },  // Скидка 10%
+         { size: '500g', price: 15.30, oldPrice: 18.00 }, // Скидка 15%
+         { size: '1kg', price: 25.60, oldPrice: 32.00 },  // Скидка 20%
       ],
+      imgArray: [
+         blackImg,
+         espresso_black_5,
+         espresso_black_front,
+      ]
    },
    {
       id: 2,
@@ -52,11 +64,18 @@ export const coffee = [
       inStock: true,
       badge: 'Sale',
       sku: 'GRD-COF-002',
-      size: [ // скидка 20%
-         { size: '250g', price: 8.80, oldPrice: 11.00 },
-         { size: '500g', price: 16.00, oldPrice: 20.00 },
-         { size: '1kg', price: 28.80, oldPrice: 36.00 },
+      liked: false,
+
+      size: [
+         { size: '250g', price: 9.35, oldPrice: 11.00 },  // Скидка 15%
+         { size: '500g', price: 16.00, oldPrice: 20.00 }, // Скидка 20%
+         { size: '1kg', price: 27.00, oldPrice: 36.00 },  // Скидка 25%
       ],
+      imgArray: [
+         grandImg,
+         espresso_black_5,
+         espresso_black_front,
+      ]
    },
    {
       id: 3,
@@ -78,11 +97,18 @@ export const coffee = [
       inStock: true,
       badge: 'New',
       sku: 'PLL-COF-003',
-      size: [ // скидка 15%
-         { size: '250g', price: 11.90, oldPrice: 14.00 },
-         { size: '500g', price: 21.25, oldPrice: 25.00 },
-         { size: '1kg', price: 38.25, oldPrice: 45.00 },
+      liked: false,
+
+      size: [
+         { size: '250g', price: 12.60, oldPrice: 14.00 }, // Скидка 10%
+         { size: '500g', price: 21.25, oldPrice: 25.00 }, // Скидка 15%
+         { size: '1kg', price: 36.00, oldPrice: 45.00 },  // Скидка 20%
       ],
+      imgArray: [
+         pulImg,
+         espresso_black_5,
+         espresso_black_front,
+      ]
    },
    {
       id: 4,
@@ -104,11 +130,18 @@ export const coffee = [
       inStock: true,
       badge: 'Sale',
       sku: 'LVZ-RED-004',
-      size: [ // скидка 25%
-         { size: '250g', price: 9.00, oldPrice: 12.00 },
-         { size: '500g', price: 16.50, oldPrice: 22.00 },
-         { size: '1kg', price: 30.00, oldPrice: 40.00 },
+      liked: false,
+
+      size: [
+         { size: '250g', price: 9.60, oldPrice: 12.00 },  // Скидка 20%
+         { size: '500g', price: 16.50, oldPrice: 22.00 }, // Скидка 25%
+         { size: '1kg', price: 28.00, oldPrice: 40.00 },  // Скидка 30%
       ],
+      imgArray: [
+         lavJng,
+         espresso_black_5,
+         espresso_black_front,
+      ]
    },
    {
       id: 5,
@@ -127,14 +160,20 @@ export const coffee = [
       brewMethods: ['Espresso'],
       rating: 4.4,
       reviews: 41,
-      inStock: false, // пример товара «нет в наличии» для вёрстки такого состояния
+      inStock: false,
       badge: null,
       sku: 'STC-ESP-005',
-      size: [ // скидка 15%
-         { size: '250g', price: 6.80, oldPrice: 8.00 },
-         { size: '500g', price: 11.90, oldPrice: 14.00 },
-         { size: '1kg', price: 21.25, oldPrice: 25.00 },
+      liked: false,
+      size: [
+         { size: '250g', price: 7.20, oldPrice: 8.00 },  // Скидка 10%
+         { size: '500g', price: 11.90, oldPrice: 14.00 }, // Скидка 15%
+         { size: '1kg', price: 20.00, oldPrice: 25.00 },  // Скидка 20%
       ],
+      imgArray: [
+         redImg,
+         espresso_black_4,
+         espresso_black_5,
+      ]
    },
    {
       id: 6,
@@ -156,10 +195,16 @@ export const coffee = [
       inStock: true,
       badge: 'New',
       sku: 'LVZ-BLU-006',
-      size: [ // скидка 20%
-         { size: '250g', price: 7.20, oldPrice: 9.00 },
-         { size: '500g', price: 12.80, oldPrice: 16.00 },
-         { size: '1kg', price: 23.20, oldPrice: 29.00 },
+      liked: false,
+      size: [
+         { size: '250g', price: 7.65, oldPrice: 9.00 },  // Скидка 15%
+         { size: '500g', price: 12.80, oldPrice: 16.00 }, // Скидка 20%
+         { size: '1kg', price: 21.75, oldPrice: 29.00 },  // Скидка 25%
       ],
+      imgArray: [
+         lavazzaBlue,
+         espresso_black_5,
+         espresso_black_front,
+      ]
    },
 ];

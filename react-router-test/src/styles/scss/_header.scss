@@ -123,3 +123,12 @@
       }
    }
 }
+
+.header {
+   transition: background-color 0.3s;
+
+   &.header--alt {
+      background-color: #14141d;
+      border-bottom: 2px solid #1d1d26;
+   }
+}

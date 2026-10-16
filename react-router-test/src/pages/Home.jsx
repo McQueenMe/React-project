@@ -120,7 +120,8 @@ function HomePage() {
                </div>
                <div className="view-more ">
                   <button className='btn-right'>
-                     <Link to="/catalog" className={isActive('/catalog')} style={{ color: 'white' }}>VIEW MORE</Link>
+                     <Link to="/catalog" className={isActive('/catalog')} style={{ color: 'white' }} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                     >VIEW MORE</Link>
                   </button>
                </div>
             </div>

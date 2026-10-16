@@ -28,7 +28,7 @@
 
    &__big-foto {
       width: 100%;
-      aspect-ratio: 1 / 1; // всегда квадрат, что бы ни лежало внутри
+      aspect-ratio: 1 / 1;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -41,7 +41,8 @@
    &__big-foto-photo {
       width: 100%;
       height: 100%;
-      object-fit: contain; // фото целиком, без обрезки и искажений
+
+      object-fit: contain;
    }
 
    &__another-fotos {
@@ -52,7 +53,6 @@
       &__foto {
          width: 88px;
          height: 88px;
-         padding: 8px;
          border: 1px solid rgb(35, 35, 46);
          border-radius: 8px;
          background-color: rgb(18, 18, 26);
@@ -61,6 +61,10 @@
             width: 100%;
             height: 100%;
             object-fit: contain;
+         }
+
+         &__small {
+            padding: 6px;
          }
       }
    }
@@ -214,6 +218,7 @@
    margin-bottom: 20px;
 
    &__button {
+      width: 25%;
       background-color: $bg-color-page;
       padding: 14px 25px;
       color: white;
@@ -226,6 +231,12 @@
       }
    }
 }
+
+.active-card {
+   background-color: rgb(27, 27, 38);
+   border: 1px solid rgb(201, 138, 94);
+}
+
 .block-count {
    padding: 10px 10px;
    font-size: 16px;
