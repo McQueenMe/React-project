@@ -5,12 +5,16 @@ import { Link } from 'react-router-dom';
 
 import '../styles/components-styles/_card.scss'
 import { useState } from 'react';
+import { useContext } from 'react';
+import { CartContext } from '../context/cartContext';
 
 
 function Card({ element }) {
 
 
-   if (!element) return null;
+   const { cart, addToCard } = useContext(CartContext);
+
+
 
    const defaultSize = element.size[0];
 
@@ -23,7 +27,11 @@ function Card({ element }) {
    function handleAddToCart(e) {
       e.preventDefault();
       e.stopPropagation();
-      console.log('Товар добавлен в корзину:', element.name);
+      console.log('Товар добавлен в корзину:', element);
+
+      alert(`${element.name} added to cart`);
+
+      addToCard(element);
    }
 
    function handleAddToFavorite(e) {
@@ -45,6 +53,9 @@ function Card({ element }) {
 
    let liked = '❤️';
    let noliked = '🤍';
+
+
+   if (!element) return null;
 
 
    return (
@@ -71,7 +82,7 @@ function Card({ element }) {
          </div>
 
          <div className="card-footer">
-            <button className="card-footer__btn" onClick={handleAddToCart}>ADD TO CART</button>
+            <button className="card-footer__btn btn-pop" onClick={handleAddToCart}>ADD TO CART</button>
             <a href='#' className={like ? "card-footer__emodzi like" : "card-footer__emodzi"} onClick={handleAddToFavorite}>{like ? liked : noliked}</a>
          </div>
       </Link>

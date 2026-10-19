@@ -107,7 +107,7 @@ function HomePage() {
             </div>
          </section>
          <section id='3' className='third-section catalog-block'>
-            <div className="catalog-block container">
+            <div className="catalog-block _container">
                <div className='catalog__title'>
                   CATALOG
                </div>
@@ -127,15 +127,20 @@ function HomePage() {
             </div>
          </section>
          <section id='4' className='four-section catalog-block'>
-            <div className="catalog-block container">
+            <div className="catalog-block _container">
                <div className='catalog__title'>
                   NEWS
                </div>
-               <div className="catalog-cards-block">
+               <div className="catalog-cards-block not-found">
                   <div className="news-slider-wrapper">
+                     {news.length === 0 && (<div className="not-found">
+                        <div className="loader"></div>
+                        <div className='title'>Loading news...</div>
+                     </div>)}
                      <NewsSlider news={news} />
                   </div>
                </div>
+
             </div>
          </section>
       </>

@@ -1,60 +1,92 @@
-
-
+import { Link, useLocation } from 'react-router-dom';
 import userLogo from '../assets/user.svg';
 import favLogo from '../assets/fav.svg';
 import cartLogo from '../assets/cart.svg';
-import logo from '../assets/logo.svg';
-import { Link, useLocation } from 'react-router-dom';
+import '../styles/scss/_header.scss'
+import { useContext } from 'react';
+import { CartContext } from '../context/cartContext';
 
-const ALT_HEADER_PATHS = ['/catalog', '/product']
+// страницы, на которых хедер тёмно-синий (на остальных — чёрный)
+const ALT_HEADER_PATHS = ['/catalog', '/product'];
+
+const NAV_LINKS = [
+   { to: '/home', label: 'HOME' },
+   { to: '/about', label: 'ABOUT' },
+   { to: '/catalog', label: 'CATALOG', also: ['/product'] }, // CATALOG горит и на странице товара
+   { to: '/reservation', label: 'RESERVATION' },
+];
+
+const ICON_BUTTONS = [
+   { label: 'Account', icon: userLogo },
+   { label: 'Favorites', icon: favLogo },
+   { label: 'Cart', icon: cartLogo },
+];
+
+function CupIcon() {
+   return (
+      <svg className="site-header__logo-icon" viewBox="0 0 24 24" aria-hidden="true">
+         <path d="M4 10h12v3a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5v-3z" />
+         <path d="M16 11h1.5a2.5 2.5 0 0 1 0 5H15" />
+         <path d="M8 4v3M12 3v4" />
+      </svg>
+   );
+}
+
 
 function Header() {
+   const { pathname } = useLocation();
 
 
-   const location = useLocation();
+   const { cart } = useContext(CartContext);
+   console.log(cart)
 
-   const isActive = (path) => location.pathname === path ? 'btns-nav active' : 'btns-nav'
-
-   const isAlt = ALT_HEADER_PATHS.some((path) => location.pathname.startsWith(path));
+   const isAlt = ALT_HEADER_PATHS.some((path) => pathname.startsWith(path));
+   const isCurrent = ({ to, also = [] }) =>
+      [to, ...also].some((path) => pathname.startsWith(path));
 
    return (
-      <div className={`container header ${isAlt ? 'header--alt' : ''}`}>
-         <div className="">
-            <div className="header-block">
+      <header className={`site-header ${isAlt ? 'site-header--alt' : ''}`}>
+         <div className="site-header__inner _container">
 
-               <div className="header-block__top">
-                  <div className="block-top__block">
-                     <div className="buttons-container">
-                        <button className="ru-btn btns">RU</button>
-                        <button className="en-btn btns active-btn">EN</button>
-                     </div>
+            <Link to="/home" className="site-header__logo" aria-label="Coffeemeet — home">
+               <CupIcon />
+               <span className="site-header__logo-text">COFFEEMEET</span>
+            </Link>
+
+            <nav aria-label="Main">
+               <ul className="site-header__nav">
+                  {NAV_LINKS.map((link) => {
+                     const current = isCurrent(link);
+                     return (
+                        <li key={link.to}>
+                           <Link
+                              to={link.to}
+                              className={`site-header__link ${current ? 'site-header__link--active' : ''}`}
+                              aria-current={current ? 'page' : undefined}
+                           >
+                              {link.label}
+                           </Link>
+                        </li>
+                     );
+                  })}
+               </ul>
+            </nav>
+
+            <div className="site-header__actions">
 
 
-                     <div className="tel-block">
-                        <a href="#" className="tel">+38099720222122121</a>
-                     </div>
-                  </div>
-               </div>
-               <div className="header-block__bottom">
-                  <ul className="left-menu">
-                     <li className="links"><Link to="/home" className={isActive('/home')}>HOME</Link></li>
-                     <li className="links"><Link to="/about" className={isActive('/about')}>ABOUT</Link></li>
-                     <li className="links"><Link to="/catalog" className={isActive('/catalog')}>CATALOG</Link></li>
-                     <li className="links"><Link to="/reservation" className={isActive('/reservation')}>RESERVATION</Link></li>
-                  </ul>
-                  <div className="logo">
-                     <img src={logo} alt=""></img>
-                  </div>
-                  <div className="buttons-menu">
-                     <a href='#' className="menu-button"><img className="img-class" src={userLogo} alt="" /></a>
-                     <a href='#' className="menu-button"><img className="img-class" src={favLogo} alt="" /></a>
-                     <a href='#' className="menu-button"><img className="img-class" src={cartLogo} alt="" /></a>
-                  </div>
-               </div>
+
+               {ICON_BUTTONS.map(({ label, icon }) => (
+                  <button key={label} type="button" className="site-header__icon-btn" aria-label={label}>
+                     <img className="site-header__icon" src={icon} alt="" />
+                  </button>
+
+               ))}
+               <div className={cart.length > 0 ? "cart-count" : ''}>{cart.length > 0 ? cart.length : ''}</div>
             </div>
-         </div>
-      </div>
 
+         </div>
+      </header>
    );
 }
 

@@ -2,6 +2,7 @@
 
 .body-container-card {
    background-color: $bg-color-page;
+   padding-top: 30px;
 }
 .section-1 {
    padding-top: 60px;
@@ -49,6 +50,7 @@
       display: flex;
       gap: 12px;
       margin-top: 14px;
+      margin-bottom: 20px;
 
       &__foto {
          width: 88px;

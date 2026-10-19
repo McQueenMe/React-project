@@ -1,134 +1,170 @@
 @use "variables" as *;
 
-.container {
-   background-color: $bg-color;
+// Цвета: меняй здесь, и они обновятся во всём хедере
 
-   li {
-      list-style: none;
+$bg-home: #000000;
+$bg-alt: #12121a;
+$line-home: #1d1d27;
+$line-alt: #23232e;
+$pill-border: #2a2a36;
+$accent: #f5c518;
+$logo-accent: #c98a5e;
+$text: #f4f4f6;
+$text-dim: #9a9aa8;
+
+.site-header {
+   background-color: $bg-home;
+   border-bottom: 1px solid $line-home;
+   color: $text;
+   position: fixed;
+   width: 100%;
+   z-index: 10;
+   transition:
+      background-color 0.3s,
+      border-color 0.3s;
+
+   &--alt {
+      background-color: $bg-alt;
+      border-bottom-color: $line-alt;
    }
 
-   .header-block {
-      display: flex;
-      flex-direction: column;
-      margin: 0 auto;
-
-      .header-block__top {
-         border-bottom: 2px solid #32323d;
-         margin: 10px 0px 0px 0px;
-         padding-bottom: 10px;
-
-         max-height: 30px;
-         align-items: center;
-
-         .block-top__block {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            align-items: center;
-
-            max-width: 1200px;
-            margin: 0 auto;
-         }
-
-         .active-btn {
-            color: #ffcc00 !important;
-         }
-
-         .tel-block {
-            color: white;
-            text-decoration: none;
-
-            .tel {
-               color: white;
-               font-family: $f-family;
-               text-decoration: none;
-            }
-         }
-
-         .buttons-container {
-            display: flex;
-            flex-direction: row;
-            gap: 10px;
-
-            .btns {
-               color: white;
-               background-color: $bg-color;
-               border: none;
-               font-size: 14px;
-               font-family: $f-family;
-               transition: color 0.3s ease;
-            }
-         }
-      }
-   }
-
-   //=========================================================
-
-   .header-block__bottom {
-      min-height: 60px;
+   &__inner {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr; // логотип | меню | действия
       align-items: center;
-      max-width: 1200px;
-      width: 100%;
-      margin: 0 auto;
+      padding-block: 18px; // только вертикаль, чтобы не сломать отступы у _container
+   }
+
+   // ---------- логотип ----------
+   &__logo {
       display: flex;
-      flex-direction: row;
-      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      justify-self: start;
+      color: $text;
+      text-decoration: none;
+   }
 
-      .left-menu {
-         display: flex;
-         flex-direction: row;
-         gap: 35px;
-         list-style: none;
-         padding: 0;
-         margin: 0;
+   &__logo-icon {
+      width: 28px;
+      height: 28px;
+      fill: none;
+      stroke: $logo-accent;
+      stroke-width: 1.6;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+   }
 
-         .links {
-            .btns-nav {
-               color: white;
-               background-color: transparent;
-               border: none;
-               font-size: 15px;
-               font-family: $f-family;
-               text-decoration: none;
-               transition: color 0.3s ease;
+   &__logo-text {
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 3px;
+   }
 
-               &.active {
-                  color: #ffcc00 !important;
-               }
+   // ---------- меню-пилюля ----------
+   &__nav {
+      display: flex;
+      gap: 4px;
+      margin: 0;
+      padding: 5px;
+      list-style: none;
+      border: 1px solid $pill-border;
+      border-radius: 40px;
+   }
 
-               &:hover {
-                  color: #ffcc00;
-               }
-            }
-         }
+   &__link {
+      display: block;
+      padding: 9px 18px;
+      border-radius: 30px;
+      color: $text;
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.8px;
+      text-decoration: none;
+      transition:
+         color 0.2s,
+         background-color 0.2s;
+
+      &:hover {
+         color: $accent;
       }
 
-      .logo {
-         width: 33.3%;
-         text-align: center;
-         align-items: center;
+      &--active,
+      &--active:hover {
+         background-color: $accent;
+         color: #14141d;
       }
+   }
 
-      .buttons-menu {
-         display: flex;
-         flex-direction: row;
-         justify-content: end;
-         gap: 30px;
-         width: 33.3%;
+   // ---------- правая часть ----------
+   &__actions {
+      display: flex;
+      align-items: center;
+      justify-self: end;
+   }
+
+   &__lang {
+      padding: 12px 6px;
+      background: none;
+      border: 0;
+      color: $text-dim;
+      font: inherit;
+      font-size: 12px;
+      cursor: pointer;
+
+      &--active {
+         color: $accent;
       }
+   }
 
-      .menu-button {
-         .img-class {
-         }
+   &__phone {
+      margin: 0 10px 0 14px;
+      color: $text-dim;
+      font-size: 13px;
+      text-decoration: none;
+
+      &:hover {
+         color: $text;
+      }
+   }
+
+   &__icon-btn {
+      display: flex;
+      padding: 11px; // вместе с иконкой 22px даёт зону нажатия 44×44
+      background: none;
+      border: 0;
+      cursor: pointer;
+   }
+
+   &__icon {
+      width: 22px;
+      height: 22px;
+   }
+
+   // В твоём reset стоит outline: none, поэтому возвращаем видимый фокус для клавиатуры
+   &__logo:focus-visible,
+   &__link:focus-visible,
+   &__lang:focus-visible,
+   &__phone:focus-visible,
+   &__icon-btn:focus-visible {
+      outline: 2px solid $accent;
+      outline-offset: 2px;
+   }
+
+   @media (max-width: 900px) {
+      &__phone {
+         display: none;
       }
    }
 }
 
-.header {
-   transition: background-color 0.3s;
-
-   &.header--alt {
-      background-color: #14141d;
-      border-bottom: 2px solid #1d1d26;
-   }
+.cart-count {
+   font-weight: 700;
+   font-family: $f-family;
+   border-radius: 100%;
+   padding: 3px 5px;
+   background-color: rgb(245, 97, 29);
+   margin-left: -15px;
+   margin-bottom: 10px;
+   font-size: 12px;
 }
