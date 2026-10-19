@@ -13,14 +13,11 @@ function RootPage() {
 
 
    const addToCard = (product, idPrice) => {
-      // Глубокое копирование, чтобы React корректно отслеживал изменения внутри объектов
       const nextCart = cart.map(item => ({ ...item }));
 
-      // Выносим цену в переменную для удобства
       const targetPrice = product.size[idPrice].price;
       const productSize = product.size[idPrice].size;
 
-      // Ищем, есть ли уже в корзине товар с таким же ID И такой же ценой/размером
       const existingItem = nextCart.find(
          (item) => item.elId === product.id && item.price === targetPrice
       );
@@ -38,19 +35,15 @@ function RootPage() {
          console.log('Добавлен новый товар');
       }
 
-      // Обновляем состояние и локальное хранилище ОДИН раз в конце функции
       setCart(nextCart);
       localStorage.setItem('Cart', JSON.stringify(nextCart));
 
-      // Показываем уведомление
       setShowToast(true);
 
-      // Защита от багов с таймерами: очищаем предыдущий таймер, если он был запущен
       if (window.toastTimer) {
          clearTimeout(window.toastTimer);
       }
 
-      // Ставим новый таймер
       window.toastTimer = setTimeout(() => {
          setShowToast(false);
       }, 3000);
