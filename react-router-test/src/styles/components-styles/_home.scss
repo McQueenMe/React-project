@@ -233,3 +233,34 @@
    text-align: center;
    align-items: center;
 }
+
+// modal window
+
+.cart-toast {
+   // Позиционируем в правом нижнем углу поверх всего сайта
+   position: fixed;
+   top: 100px;
+   right: -350px; // Изначально прячем плашку полностью за правый край экрана
+   z-index: 1000; // Поднимаем выше всех элементов на странице
+
+   // Оформление в твоем деловом стиле
+   background-color: #14141d;
+   color: #ffffff;
+   border: 1px solid #232330;
+   padding: 16px 24px;
+   border-radius: 8px;
+   font-size: 14px;
+   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+
+   // Настройка плавной анимации движения и прозрачности
+   opacity: 0;
+   transition:
+      right 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+      opacity 0.3s ease;
+
+   // Модификатор, который активируется через React
+   &--visible {
+      right: 30px; // Выезжает на 30px от правого края
+      opacity: 1; // Становится полностью видимой
+   }
+}

@@ -15,7 +15,6 @@ function Card({ element }) {
    const { cart, addToCard } = useContext(CartContext);
 
 
-
    const defaultSize = element.size[0];
 
    const productUrl = `/catalog/${element.name.toLowerCase().replace(/\s+/g, '-')}`;
@@ -29,9 +28,9 @@ function Card({ element }) {
       e.stopPropagation();
       console.log('Товар добавлен в корзину:', element);
 
-      alert(`${element.name} added to cart`);
+      let idPrice = 0;
 
-      addToCard(element);
+      addToCard(element, Number(idPrice));
    }
 
    function handleAddToFavorite(e) {
