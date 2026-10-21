@@ -3,8 +3,11 @@ import userLogo from '../assets/user.svg';
 import favLogo from '../assets/fav.svg';
 import cartLogo from '../assets/cart.svg';
 import '../styles/scss/_header.scss'
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { CartContext } from '../context/cartContext';
+import Card from './card';
+import CardToCart from './cardToCart';
+import Cart from './cart';
 
 // страницы, на которых хедер тёмно-синий (на остальных — чёрный)
 const ALT_HEADER_PATHS = ['/catalog', '/product'];
@@ -33,9 +36,11 @@ function CupIcon() {
 }
 
 
+
 function Header() {
    const { pathname } = useLocation();
 
+   const [isOpenCart, setIsOpenCart] = useState(false);
 
    const { cart } = useContext(CartContext);
    console.log(cart)
@@ -43,6 +48,12 @@ function Header() {
    const isAlt = ALT_HEADER_PATHS.some((path) => pathname.startsWith(path));
    const isCurrent = ({ to, also = [] }) =>
       [to, ...also].some((path) => pathname.startsWith(path));
+
+   function openCart() {
+      isOpenCart ? setIsOpenCart(false) : setIsOpenCart(true);
+
+      console.log(isOpenCart ? 'Close' : 'Open');
+   }
 
    return (
       <header className={`site-header ${isAlt ? 'site-header--alt' : ''}`}>
@@ -77,7 +88,7 @@ function Header() {
 
 
                {ICON_BUTTONS.map(({ label, icon }) => (
-                  <button key={label} type="button" className="site-header__icon-btn" aria-label={label}>
+                  <button key={label} type="button" className="site-header__icon-btn" aria-label={label} onClick={openCart}>
                      <img className="site-header__icon" src={icon} alt="" />
                   </button>
 
@@ -86,8 +97,12 @@ function Header() {
             </div>
 
          </div>
+
+         {isOpenCart ? <Cart openCart={openCart} /> : ''}
+
       </header>
    );
 }
 
 export default Header;
+

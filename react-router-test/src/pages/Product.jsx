@@ -1,6 +1,7 @@
 import { useParams, Link } from 'react-router-dom';
 import { coffee } from '../data/coffee-obj';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { CartContext } from '../context/cartContext';
 
 function ProductPage() {
 
@@ -71,6 +72,12 @@ function ProductPage() {
       setActivePrice(selectedId);
    }
 
+   const { cart, addToCard } = useContext(CartContext);
+
+   /*    function addToCart(currentProduct, activePrice){
+   
+      } */
+
 
 
    let liked = '❤️';
@@ -128,7 +135,7 @@ function ProductPage() {
                         <button className="block-count__count">{count}</button>
                         <button className="block-count__plus" onClick={addCount}>+</button>
                      </div>
-                     <button className="right-block__count-block__add-to-cart-btn">
+                     <button className="right-block__count-block__add-to-cart-btn" onClick={() => addToCard(currentProduct, activePrice, count)}>
                         ADD TO CART
                      </button>
                      <button className={like ? "right-block__count-block__favourite-btn like" : "right-block__count-block__favourite-btn"} onClick={handleAddToFavorite}>{like ? liked : noliked} </button>

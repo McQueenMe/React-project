@@ -9,6 +9,7 @@ import HomePage from './pages/Home.jsx'
 import RootPage from './pages/Root.jsx'
 import CatalogPage from './pages/Catalog.jsx'
 import ProductPage from './pages/Product.jsx'
+import CheckOut from './pages/CheckOut.jsx'
 
 
 const router = createBrowserRouter([
@@ -41,13 +42,16 @@ const router = createBrowserRouter([
         path: 'reservation',
         element: <ReservationPage />,
       },
+      {
+        path: 'checkout',
+        element: <CheckOut />,
+      },
     ],
   }
 ])
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    {/* 2. Заменяем <RootPage /> на RouterProvider и передаем ему наш router */}
     <RouterProvider router={router} />
   </StrictMode>,
 )
