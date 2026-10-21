@@ -132,15 +132,11 @@ function CatalogPage() {
 
       const matchesSize = options.size.length === 0 || options.size.includes(item.size[0].size) || options.size.includes(item.size[1].size) || options.size.includes(item.size[2].size);
 
-      // Левый фильтр: если цена не введена (0, null, пустой массив), то пропускаем все. 
-      // Иначе — цена кофе должна быть больше или равна введенной.
       const matchPriceLeft =
          !options.price_start ||
          options.price_start === 0 ||
          item.size[0].price >= options.price_start;
 
-      // Правый фильтр: если цена конца не введена (0, null, пустой массив, Infinity), то пропускаем все.
-      // Иначе — цена кофе должна быть меньше или равна введенной.
       const matchPriceRight =
          !options.price_end ||
          options.price_end === 0 ||
@@ -222,7 +218,6 @@ function CatalogPage() {
                   ))}
                </div>
                <div className="right-part__cards-area">
-                  {/* 🔥 Вместо filteredCoffeeProducts выводим sortedCoffeeProducts */}
                   {sortedCoffeeProducts.map((el) => (
                      <Card key={el.name} element={el} />
                   ))}

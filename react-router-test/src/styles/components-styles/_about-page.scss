@@ -1,0 +1,94 @@
+@use "../scss/variables" as *;
+
+.about-page {
+   background-color: #0b0b0e; // Твой глубокий темный фон
+   color: #ffffff;
+   padding-top: 80px; // Отступ под шапку
+   min-height: 100vh;
+}
+
+.about-hero {
+   padding: 100px 0 60px 0;
+   text-align: center;
+   background: linear-gradient(180deg, rgba(17, 17, 22, 0) 0%, #0b0b0e 100%);
+
+   &__title {
+      font-size: 3.5rem;
+      font-weight: 700;
+      letter-spacing: 4px;
+      margin-bottom: 24px;
+      // Цвет твоего желтого акцента из каталога (CATALOG)
+      color: #f1c40f;
+   }
+
+   &__subtitle {
+      font-size: 1.2rem;
+      line-height: 1.6;
+      max-width: 800px;
+      margin: 0 auto;
+      color: #b3b3b3;
+   }
+}
+
+.about-grid {
+   display: grid;
+   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+   gap: 30px;
+   padding: 40px 0 80px 0;
+}
+
+.about-card {
+   background-color: #111116; // Цвет карточек, как в каталоге
+   padding: 40px 30px;
+   border-radius: 12px;
+   border: 1px solid rgba(255, 255, 255, 0.03);
+   transition: transform 0.3s ease;
+
+   &:hover {
+      transform: translateY(-5px);
+   }
+
+   &__num {
+      font-size: 0.9rem;
+      color: #e74c3c; // Твой красный акцент для лайков/иконок
+      font-weight: 700;
+      margin-bottom: 15px;
+      display: inline-block;
+      letter-spacing: 2px;
+   }
+
+   &__title {
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+      font-weight: 600;
+   }
+
+   &__text {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: #9e9e9e;
+   }
+}
+
+.about-footer-block {
+   padding: 60px 40px;
+   background-color: #111116;
+   border-radius: 16px;
+   text-align: center;
+   margin-bottom: 100px;
+   border: 1px solid rgba(255, 255, 255, 0.03);
+
+   &__title {
+      font-size: 2rem;
+      letter-spacing: 2px;
+      margin-bottom: 20px;
+   }
+
+   &__text {
+      font-size: 1.05rem;
+      color: #b3b3b3;
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.6;
+   }
+}

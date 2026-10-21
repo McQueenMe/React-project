@@ -135,7 +135,7 @@ function ProductPage() {
                         <button className="block-count__count">{count}</button>
                         <button className="block-count__plus" onClick={addCount}>+</button>
                      </div>
-                     <button className="right-block__count-block__add-to-cart-btn" onClick={() => addToCard(currentProduct, activePrice)}>
+                     <button className="right-block__count-block__add-to-cart-btn" onClick={() => addToCard(currentProduct, activePrice, count)}>
                         ADD TO CART
                      </button>
                      <button className={like ? "right-block__count-block__favourite-btn like" : "right-block__count-block__favourite-btn"} onClick={handleAddToFavorite}>{like ? liked : noliked} </button>
