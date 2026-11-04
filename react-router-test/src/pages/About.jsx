@@ -6,7 +6,6 @@ import roastingImg from '../assets/lav-grey/lavazza1.png';
 function AboutPage() {
    return (
       <div className="about-page">
-         {/* 1. Блок-презентация (Hero Section) */}
          <section className="about-hero">
             <div className="about-hero__inner _container">
                <h1 className="about-hero__title">WE BREATHE COFFEE</h1>
@@ -17,7 +16,6 @@ function AboutPage() {
             </div>
          </section>
 
-         {/* 2. Блок с сеткой преимуществ (Миссия/Концепт) */}
          <section className="about-features _container">
             <div className="about-grid">
 
@@ -51,7 +49,6 @@ function AboutPage() {
             </div>
          </section>
 
-         {/* 3. Финальный футер-блок страницы */}
          <section className="about-footer-block _container">
             <div className="about-footer-block__content">
                <h2 className="about-footer-block__title">MADE WITH PASSION</h2>
