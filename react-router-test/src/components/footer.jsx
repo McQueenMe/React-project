@@ -26,7 +26,7 @@ function Footer() {
                   <li className="links"><Link to="/home" className={isActive('/home')}>HOME</Link></li>
                   <li className="links"><Link to="/about" className={isActive('/about')}>ABOUT</Link></li>
                   <li className="links"><Link to="/catalog" className={isActive('/catalog')}>CATALOG</Link></li>
-                  <li className="links"><Link to="/reservation" className={isActive('/reservation')}>RESERVATION</Link></li>
+                  <li className="links"><Link to="/checkout" className={isActive('/checkout')}>CHECKOUT</Link></li>
                </ul>
             </div>
             <div className="footer-right">

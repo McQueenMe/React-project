@@ -12,6 +12,7 @@ import ProductPage from './pages/Product.jsx'
 import CheckOut from './pages/CheckOut.jsx'
 
 
+
 const router = createBrowserRouter([
   {
     path: '/',
@@ -38,10 +39,10 @@ const router = createBrowserRouter([
         path: 'catalog/:id',
         element: <ProductPage />
       },
-      {
+      /* {
         path: 'reservation',
         element: <ReservationPage />,
-      },
+      }, */
       {
         path: 'checkout',
         element: <CheckOut />,
