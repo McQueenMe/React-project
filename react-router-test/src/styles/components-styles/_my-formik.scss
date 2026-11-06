@@ -48,7 +48,25 @@
    border-radius: 6px;
    outline: none;
    transition: all 0.2s ease-in-out;
-   color: #334155;
+   color: #ffffff;
+
+   &:active {
+      background-color: $bg-cart-color;
+   }
+
+   &:not(:placeholder-shown) {
+      background-color: $bg-cart-color;
+   }
+
+   &.is-invalid {
+      border-color: #dc3545 !important;
+      box-shadow: 0 0 0 0.25rem rgba(25, 53, 69, 0.25) !important;
+   }
+
+   &.is-valid {
+      border-color: #198754 !important;
+      box-shadow: 0 0 0 0.25rem rgba(25, 24, 84, 0.25) !important;
+   }
 }
 
 .form-input:focus {
@@ -56,7 +74,6 @@
    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
 }
 
-/* Подсказка */
 .form-help-text {
    margin-top: 6px;
    font-size: 12px;
@@ -175,6 +192,10 @@
       font-size: 20px;
       font-weight: 300;
 
+      &:active {
+         border: 1px solid rgb(193, 178, 255);
+      }
+
       &:hover {
          border: 1px solid rgb(193, 178, 255);
          transition-duration: 1s;
@@ -204,4 +225,18 @@
 }
 .total-price__price {
    color: #f1f12a;
+}
+
+//----------------------//
+.form-input:-webkit-autofill,
+.form-input:-webkit-autofill:hover,
+.form-input:-webkit-autofill:focus,
+.form-input:-webkit-autofill:active {
+   -webkit-box-shadow: 0 0 0px 1000px #14141d inset !important;
+   -webkit-text-fill-color: #ffffff !important; /* Цвет текста внутри поля */
+   transition: background-color 5000s ease-in-out 0s;
+}
+
+.active-btn {
+   border: 1px solid rgb(193, 178, 255);
 }
