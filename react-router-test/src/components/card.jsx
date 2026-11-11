@@ -80,9 +80,9 @@ function Card({ element }) {
             </div>
          </div>
 
-         <div className="card-footer">
-            <button className="card-footer__btn btn-pop" onClick={handleAddToCart}>ADD TO CART</button>
-            <a href='#' className={like ? "card-footer__emodzi like" : "card-footer__emodzi"} onClick={handleAddToFavorite}>{like ? liked : noliked}</a>
+         <div className="card-footer-my">
+            <button className="card-footer-my__btn btn-pop" onClick={handleAddToCart}>ADD TO CART</button>
+            <a href='#' className={like ? "card-footer-my__emodzi like" : "card-footer-my__emodzi"} onClick={handleAddToFavorite}>{like ? liked : noliked}</a>
          </div>
       </Link>
 

@@ -13,7 +13,7 @@ import { CartContext } from '../context/cartContext';
 
 function CardToCart({ cartElement }) {
 
-   console.log(cartElement)
+   // console.log(cartElement)
 
    const [cartEl, setCartEl] = useState(cartElement.count);
    const { cart, setCart, deleteProduct } = useContext(CartContext);
@@ -23,7 +23,7 @@ function CardToCart({ cartElement }) {
    let elId = cartElement.elId;
    let sizeLocal = 0;
 
-   console.log(cartElement);
+   // console.log(cartElement);
 
    if (cartElement.size === '250g') {
       sizeLocal = 0;
@@ -31,7 +31,7 @@ function CardToCart({ cartElement }) {
       sizeLocal = 1;
    } else sizeLocal = 2;
 
-   console.log(coffee[id].size[sizeLocal]);
+   // console.log(coffee[id].size[sizeLocal]);
 
 
    let count = cartEl;

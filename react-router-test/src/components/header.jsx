@@ -19,8 +19,6 @@ const NAV_LINKS = [
 ];
 
 const ICON_BUTTONS = [
-   { label: 'Account', icon: userLogo },
-   { label: 'Favorites', icon: favLogo },
    { label: 'Cart', icon: cartLogo },
 ];
 
