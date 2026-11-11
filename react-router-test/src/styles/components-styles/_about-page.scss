@@ -1,9 +1,9 @@
 @use "../scss/variables" as *;
 
 .about-page {
-   background-color: #0b0b0e; // Твой глубокий темный фон
+   background-color: #0b0b0e;
    color: #ffffff;
-   padding-top: 80px; // Отступ под шапку
+   padding-top: 80px;
    min-height: 100vh;
    padding-bottom: 50px;
 }
@@ -18,7 +18,6 @@
       font-weight: 700;
       letter-spacing: 4px;
       margin-bottom: 24px;
-      // Цвет твоего желтого акцента из каталога (CATALOG)
       color: #f1c40f;
    }
 
@@ -39,7 +38,7 @@
 }
 
 .about-card {
-   background-color: #111116; // Цвет карточек, как в каталоге
+   background-color: #111116;
    padding: 40px 30px;
    border-radius: 12px;
    border: 1px solid rgba(255, 255, 255, 0.03);
@@ -51,7 +50,7 @@
 
    &__num {
       font-size: 0.9rem;
-      color: #e74c3c; // Твой красный акцент для лайков/иконок
+      color: #e74c3c;
       font-weight: 700;
       margin-bottom: 15px;
       display: inline-block;

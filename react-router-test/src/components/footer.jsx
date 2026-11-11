@@ -13,9 +13,11 @@ function Footer() {
 
    const isActive = (path) => location.pathname === path ? 'btns-nav active' : 'btns-nav'
 
+   console.log(location.pathname)
+
 
    return (
-      <div className="fot-container">
+      <div className={location.pathname === '/checkout' ? "fot-container black" : location.pathname === '/catalog' ? "fot-container black" : "fot-container"}>
          <div className="footer-block">
             <div className="footer-left">
                <img className='img-logo' src={logo} alt="" />
