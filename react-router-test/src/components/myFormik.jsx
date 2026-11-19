@@ -67,13 +67,13 @@ function MyFormik() {
          }
 
          if (!values.city) {
-            errors.city = 'U bomsh'
+            errors.city = 'Its important'
          } else if (values.city.length < 2) {
             errors.city = 'Live'
          }
 
          if (!values.post) {
-            errors.post = 'U bomsh'
+            errors.post = 'Input anything'
          } else if (values.post.length < 2 || !Number(values.post)) {
             errors.post = 'No problem'
          }
@@ -241,9 +241,6 @@ function MyFormik() {
                </div> : ''}
             <div className="form-container">
                <h2 className="form-title">Enter your information</h2>
-
-
-
                <form className="custom-form" onSubmit={formik.handleSubmit}>
 
                   <div className="form-group">

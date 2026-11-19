@@ -1,15 +1,34 @@
 import { useState, useEffect, useRef } from 'react';
-import NewsCard from './newsCard';
-import '../styles/components-styles/_news-slider.scss';
-
-const CARDS_PER_VIEW = 3;
+import NewsCard from './NewsCard';
 
 function NewsSlider({ news }) {
    const [currentIndex, setCurrentIndex] = useState(0);
+   const [cardsPerView, setCardsPerView] = useState(3);
    const intervalRef = useRef(null);
 
+   useEffect(() => {
+      const handleResize = () => {
+         if (window.innerWidth <= 650) {
+            setCardsPerView(1); // Телефоны — 1 карточка
+         } else if (window.innerWidth <= 992) {
+            setCardsPerView(2); // Планшеты — 2 карточки
+         } else {
+            setCardsPerView(3); // Компьютеры — 3 карточки
+         }
+      };
 
-   const maxIndex = news.length - CARDS_PER_VIEW; // последняя позиция, где ещё влезает 3 карточки
+      handleResize();
+      window.addEventListener('resize', handleResize);
+      return () => window.removeEventListener('resize', handleResize);
+   }, []);
+
+   const maxIndex = Math.max(0, news.length - cardsPerView);
+
+   useEffect(() => {
+      if (currentIndex > maxIndex) {
+         setCurrentIndex(maxIndex);
+      }
+   }, [cardsPerView, news.length, maxIndex, currentIndex]);
 
    const goNext = () => {
       setCurrentIndex((prev) => (prev >= maxIndex ? 0 : prev + 1));
@@ -20,10 +39,10 @@ function NewsSlider({ news }) {
    };
 
    useEffect(() => {
-      if (news.length <= CARDS_PER_VIEW) return; // если карточек мало — крутить нечего
+      if (news.length <= cardsPerView) return;
       intervalRef.current = setInterval(goNext, 5000);
       return () => clearInterval(intervalRef.current);
-   }, [currentIndex, news.length]);
+   }, [currentIndex, news.length, cardsPerView, maxIndex]);
 
    const handlePrevClick = () => {
       clearInterval(intervalRef.current);
@@ -37,26 +56,31 @@ function NewsSlider({ news }) {
 
    if (news.length === 0) return null;
 
+   const visibleNews = news.slice(currentIndex, currentIndex + cardsPerView);
+
    return (
-      <div className="news-slider">
-         <button className="slider-btn slider-btn--prev" onClick={handlePrevClick}>
+      <div className="news-slider-box">
+         <button className="news-arrow-btn" onClick={handlePrevClick}>
             ‹
          </button>
 
-         <div className="slider-viewport">
-            <div
-               className="slider-track"
-               style={{ transform: `translateX(-${currentIndex * (100 / CARDS_PER_VIEW)}%)` }}
-            >
-               {news.map((el) => (
-                  <div className="slider-slide" key={el.id}>
-                     <NewsCard el={el} />
-                  </div>
-               ))}
-            </div>
+         <div
+            className="news-cards-grid"
+            style={{
+               display: 'grid',
+               gridTemplateColumns: `repeat(${cardsPerView}, minmax(0, 1fr))`,
+               gap: '20px',
+               width: '100%'
+            }}
+         >
+            {visibleNews.map((el) => (
+               <div key={el.id} style={{ minWidth: 0, width: '100%' }}>
+                  <NewsCard el={el} />
+               </div>
+            ))}
          </div>
 
-         <button className="slider-btn slider-btn--next" onClick={handleNextClick}>
+         <button className="news-arrow-btn" onClick={handleNextClick}>
             ›
          </button>
       </div>

@@ -55,3 +55,24 @@
    color: white;
    font-family: $f-family;
 }
+
+@media (max-width: 480px) {
+   .news-cards-grid {
+      padding: 0px;
+   }
+
+   .news-card {
+      align-items: center;
+   }
+
+   .news-slider-box {
+      margin-bottom: 20px;
+   }
+
+   .card__subtitle {
+      font-size: 15px !important;
+      width: 100%;
+      text-align: center !important;
+      align-items: center;
+   }
+}

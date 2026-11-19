@@ -68,7 +68,7 @@ function Cart({ openCart }) {
                </div>
                <button className="cart-block__btn" onClick={goToCheck}>
                   <Link to="/checkout"
-                  > <span className="cart-block__btn-span">Continue to checkout</span>  </Link>
+                  > <span className="cart-block__btn-span" onClick={openCart}>Continue to checkout</span>  </Link>
                </button>
             </div>
          </div>

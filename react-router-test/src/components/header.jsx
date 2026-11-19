@@ -1,12 +1,8 @@
 import { Link, useLocation } from 'react-router-dom';
-import userLogo from '../assets/user.svg';
-import favLogo from '../assets/fav.svg';
 import cartLogo from '../assets/cart.svg';
-import '../styles/scss/_header.scss'
-import { useContext, useState } from 'react';
+import '../styles/scss/_header.scss';
+import { useContext, useState, useEffect } from 'react';
 import { CartContext } from '../context/cartContext';
-import Card from './card';
-import CardToCart from './cardToCart';
 import Cart from './cart';
 
 const ALT_HEADER_PATHS = ['/catalog', '/product', '/checkout'];
@@ -19,115 +15,6 @@ const NAV_LINKS = [
 ];
 
 const ICON_BUTTONS = [
-   { label: 'Cart', icon: cartLogo },
-];
-
-function CupIcon() {
-   return (
-      <svg className="site-header__logo-icon" viewBox="0 0 24 24" aria-hidden="true">
-         <path d="M4 10h12v3a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5v-3z" />
-         <path d="M16 11h1.5a2.5 2.5 0 0 1 0 5H15" />
-         <path d="M8 4v3M12 3v4" />
-      </svg>
-   );
-}
-
-
-
-function Header() {
-   const { pathname } = useLocation();
-
-   const [isOpenCart, setIsOpenCart] = useState(false);
-
-   const { cart } = useContext(CartContext);
-   console.log(cart)
-
-   const isAlt = ALT_HEADER_PATHS.some((path) => pathname.startsWith(path));
-   const isCurrent = ({ to, also = [] }) =>
-      [to, ...also].some((path) => pathname.startsWith(path));
-
-   function openCart() {
-
-      isOpenCart ? setIsOpenCart(false) : setIsOpenCart(true);
-
-      console.log(isOpenCart ? 'Close' : 'Open');
-
-   }
-
-   return (
-      <header className={`site-header ${isAlt ? 'site-header--alt' : ''}`}>
-         <div className="site-header__inner _container">
-
-            <Link to="/home" className="site-header__logo" aria-label="Coffeemeet — home">
-               <CupIcon />
-               <span className="site-header__logo-text">COFFEEMEET</span>
-            </Link>
-
-            <nav aria-label="Main">
-               <ul className="site-header__nav">
-                  {NAV_LINKS.map((link) => {
-                     const current = isCurrent(link);
-                     return (
-                        <li key={link.to}>
-                           <Link
-                              to={link.to}
-                              className={`site-header__link ${current ? 'site-header__link--active' : ''}`}
-                              aria-current={current ? 'page' : undefined}
-                           >
-                              {link.label}
-                           </Link>
-                        </li>
-                     );
-                  })}
-               </ul>
-            </nav>
-
-            <div className="site-header__actions">
-
-
-
-               {ICON_BUTTONS.map(({ label, icon }) => (
-                  <button key={label} type="button" className="site-header__icon-btn" aria-label={label} onClick={label === 'Cart' ? openCart : ''}>
-                     <img className="site-header__icon" src={icon} alt="" />
-                  </button>
-
-               ))}
-               <div className={cart.length > 0 ? "cart-count" : ''}>{cart.length > 0 ? cart.length : ''}</div>
-            </div>
-
-         </div>
-
-         {isOpenCart ? <Cart openCart={openCart} /> : ''}
-
-      </header>
-   );
-}
-
-export default Header;
-
-
-/*import { useContext, useEffect, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import userLogo from '../assets/user.svg';
-import favLogo from '../assets/fav.svg';
-import cartLogo from '../assets/cart.svg';
-import '../styles/scss/_header.scss';
-import { CartContext } from '../context/cartContext';
-import Cart from './cart';
-
-// страницы, на которых хедер тёмно-синий (на остальных — чёрный)
-const ALT_HEADER_PATHS = ['/catalog', '/product'];
-
-const NAV_LINKS = [
-   { to: '/home', label: 'HOME' },
-   { to: '/about', label: 'ABOUT' },
-   { to: '/catalog', label: 'CATALOG', also: ['/product'] }, // CATALOG горит и на странице товара
-   { to: '/checkout', label: 'CHECKOUT' },
-];
-
-const ICON_BUTTONS = [
-   { label: 'Account', icon: userLogo },
-   { label: 'Favorites', icon: favLogo },
    { label: 'Cart', icon: cartLogo, isCart: true },
 ];
 
@@ -143,28 +30,23 @@ function CupIcon() {
 
 function Header() {
    const { pathname } = useLocation();
-
    const [isOpenCart, setIsOpenCart] = useState(false);
    const [isMenuOpen, setIsMenuOpen] = useState(false);
-
    const { cart } = useContext(CartContext);
 
    const isAlt = ALT_HEADER_PATHS.some((path) => pathname.startsWith(path));
    const isCurrent = ({ to, also = [] }) =>
       [to, ...also].some((path) => pathname.startsWith(path));
 
-   // и открывает, и закрывает корзину (Cart получает её как openCart); меню при этом закрываем
-   const openCart = () => {
+   function openCart() {
       setIsMenuOpen(false);
       setIsOpenCart((prev) => !prev);
-   };
+   }
 
    const closeMenu = () => setIsMenuOpen(false);
 
-   // Esc закрывает мобильное меню
    useEffect(() => {
       if (!isMenuOpen) return;
-
       const onKeyDown = (e) => {
          if (e.key === 'Escape') setIsMenuOpen(false);
       };
@@ -172,16 +54,20 @@ function Header() {
       return () => document.removeEventListener('keydown', onKeyDown);
    }, [isMenuOpen]);
 
+   useEffect(() => {
+      document.body.style.overflow = isMenuOpen ? 'hidden' : '';
+      return () => { document.body.style.overflow = ''; };
+   }, [isMenuOpen]);
+
    return (
       <header className={`site-header ${isAlt ? 'site-header--alt' : ''}`}>
          <div className="site-header__inner _container">
 
-            <Link to="/home" className="site-header__logo" aria-label="Coffeemeet — home">
+            <Link to="/home" className="site-header__logo" aria-label="Coffeemeet — home" onClick={closeMenu}>
                <CupIcon />
                <span className="site-header__logo-text">COFFEEMEET</span>
             </Link>
 
-            {/* на десктопе это пилюля, на мобильном — выпадающее меню }
             <nav
                id="main-menu"
                className={`site-header__menu ${isMenuOpen ? 'site-header__menu--open' : ''}`}
@@ -211,16 +97,16 @@ function Header() {
                   <button
                      key={label}
                      type="button"
-                     className={`site-header__icon-btn ${isCart ? 'site-header__icon-btn--cart' : ''}`}
+                     className="site-header__icon-btn"
                      aria-label={label}
                      onClick={isCart ? openCart : undefined}
                   >
                      <img className="site-header__icon" src={icon} alt="" />
-                     {isCart && cart.length > 0 && (
-                        <span className="cart-count">{cart.length}</span>
-                     )}
                   </button>
                ))}
+               <div className={cart.length > 0 ? "cart-count" : ''}>
+                  {cart.length > 0 ? cart.length : ''}
+               </div>
 
                <button
                   type="button"
@@ -230,19 +116,15 @@ function Header() {
                   aria-controls="main-menu"
                   onClick={() => setIsMenuOpen((prev) => !prev)}
                >
-                  <span
-                     className={`site-header__burger-lines ${isMenuOpen ? 'site-header__burger-lines--open' : ''}`}
-                  />
+                  <span className={`site-header__burger-lines ${isMenuOpen ? 'site-header__burger-lines--open' : ''}`} />
                </button>
             </div>
 
          </div>
 
          {isOpenCart ? <Cart openCart={openCart} /> : ''}
-
       </header>
    );
 }
 
 export default Header;
-*/
