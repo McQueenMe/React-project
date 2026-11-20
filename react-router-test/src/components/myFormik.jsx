@@ -196,7 +196,7 @@ function MyFormik() {
 
 
    function showSucced() {
-      if (cart.length > 0) {
+      if ((cart.length) > 0 && (!formik.errors)) {
          setToast(true);
 
          setTimeout(() => {
@@ -205,6 +205,7 @@ function MyFormik() {
       }
    }
 
+   console.log(formik)
 
    return (
       <>
@@ -357,24 +358,29 @@ function MyFormik() {
 
                   <h2 className="form-title">Choose payment method</h2>
 
-                  <div className="payment">
-                     <button id='1' type='button' className={isActiveButton == 1 ? "payment__block active-btn" : 'payment__block'} onClick={() => setActiveButton('1')}>
-                        <img className='payment__icon' src={money} alt="" />
-                        <div className="payment__text">Cash</div>
-                     </button>
-                     <button id='2' type='button' className={isActiveButton == 2 ? "payment__block active-btn" : 'payment__block'} onClick={() => setActiveButton('2')}>
-                        <img className='payment__icon' src={card} alt="" />
-                        <div className="payment__text">Card</div>
-                     </button>
-                     <button id='3' type='button' className={isActiveButton == 3 ? "payment__block active-btn" : 'payment__block'} onClick={() => setActiveButton('3')}>
-                        <img className='payment__icon' src={apple} alt="" />
-                        <div className="payment__text">Apple Pay</div>
-                     </button>
+
+                  <div className="payment-block">
+                     <div className="payment">
+                        <button id='1' type='button' className={isActiveButton == 1 ? "payment__block active-btn" : 'payment__block'} onClick={() => setActiveButton('1')}>
+                           <img className='payment__icon' src={money} alt="" />
+                           <div className="payment__text">Cash</div>
+                        </button>
+                        <button id='2' type='button' className={isActiveButton == 2 ? "payment__block active-btn" : 'payment__block'} onClick={() => setActiveButton('2')}>
+                           <img className='payment__icon' src={card} alt="" />
+                           <div className="payment__text">Card</div>
+                        </button>
+                        <button id='3' type='button' className={isActiveButton == 3 ? "payment__block active-btn" : 'payment__block'} onClick={() => setActiveButton('3')}>
+                           <img className='payment__icon' src={apple} alt="" />
+                           <div className="payment__text">Apple Pay</div>
+                        </button>
+
+                     </div>
+                     <button type="submit" className="btn-submit btn-solid theme-primary justify-self-center" onClick={showSucced}>Buy</button>
                   </div>
 
 
 
-                  <button type="submit" className="btn-submit btn-solid theme-primary justify-self-start" onClick={showSucced}>Buy</button>
+
 
                </form>
             </div>

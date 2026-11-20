@@ -183,9 +183,8 @@ function CatalogPage() {
                />
             </div>
             <div className="catalog__toolbar-right">
-               {/* 2. Кнопка открытия фильтров (будет видна только при <= 800px) */}
                <button
-                  className="catalog__filter-toggle"
+                  className="catalog__filter-toggle  display-none"
                   onClick={() => setIsFilterOpen(true)}
                >
                   Filters
@@ -198,15 +197,13 @@ function CatalogPage() {
          </section>
 
          <section className="catalog__filters _container">
-            {/* 3. Затемняющий фон при открытом меню */}
             <div
                className={`catalog__overlay ${isFilterOpen ? 'is-open' : ''}`}
                onClick={() => setIsFilterOpen(false)}
             />
 
-            {/* 4. Панель фильтров с динамическим классом is-open */}
-            <div className={`catalog__filters-inner ${isFilterOpen ? 'is-open' : ''}`}>
-               <div className="catalog__filters-header">
+            <div className={`catalog__filters-inner  ${isFilterOpen ? 'is-open' : ''}`}>
+               <div className="catalog__filters-header  display-none">
                   <span>FILTERS</span>
                   <button
                      className="catalog__close-btn"

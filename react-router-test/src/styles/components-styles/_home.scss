@@ -323,7 +323,6 @@
 }
 
 @media (max-width: 768px) {
-   // 1. Первая секция (убираем жесткую высоту, чтобы блок рос под контент)
    .first-section {
       max-height: none;
    }
@@ -347,18 +346,17 @@
 
          .block-body-btns {
             justify-content: center;
-            flex-wrap: wrap; // Если экран совсем узкий, кнопки аккуратно встанут друг под друга
+            flex-wrap: wrap;
          }
       }
    }
 
-   // 2. Вторая секция (снимаем ограничение высоты 330px и ставим картинку над текстом)
    .second-section {
       padding: 50px 20px 10px 20px;
 
       .block-container {
          flex-direction: column;
-         max-height: none; // Убираем десктопное ограничение высоты!
+         max-height: none;
          height: auto;
 
          .block-left {
@@ -369,14 +367,14 @@
                max-width: 100%;
                height: auto;
                display: block;
-               border-radius: 10px 10px 0 0; // Скругляем верхние углы картинки
+               border-radius: 10px 10px 0 0;
             }
          }
 
          .block-right {
             width: 100%;
             padding: 25px 20px;
-            border-radius: 0 0 10px 10px; // Скругляем нижние углы карточки с текстом
+            border-radius: 0 0 10px 10px;
 
             .block-right__title {
                margin-top: 0;
@@ -389,6 +387,22 @@
             }
          }
       }
+   }
+}
+
+@media (max-width: 450px) {
+   .catalog-cards-block {
+      display: flex;
+      justify-content: center;
+   }
+
+   .view-more {
+      align-items: center;
+      text-align: center;
+   }
+
+   .cart-block {
+      min-width: 100%;
    }
 }
 
@@ -429,5 +443,9 @@
    .catalog-cards-block .card .card-logo .img-logo img {
       width: 100px;
       height: 100px;
+   }
+
+   .cart-block {
+      max-width: 100%;
    }
 }
