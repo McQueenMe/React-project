@@ -163,6 +163,7 @@
          width: 100%;
          gap: 20px;
          padding-bottom: 20px;
+         justify-content: center;
       }
    }
 
@@ -387,6 +388,10 @@
             }
          }
       }
+   }
+   .catalog-cards-block {
+      justify-content: center;
+      align-items: center;
    }
 }
 
