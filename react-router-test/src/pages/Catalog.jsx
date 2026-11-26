@@ -3,6 +3,7 @@ import Card from '../components/card';
 import { coffee } from '../data/coffee-obj';
 import FilterCards from '../components/filterCards';
 import RightFilterCard from '../components/right-filter-card';
+import SortDropdown from '../components/SortDropdown'
 
 function CatalogPage() {
    const FILTERDATA = [
