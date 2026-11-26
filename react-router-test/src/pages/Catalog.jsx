@@ -113,6 +113,7 @@ function CatalogPage() {
 
    }
 
+
    function clearAllFilters() {
       setSearchTerm('');
       setOptions({ roast: [], origin: [], size: [], price_start: 0, price_end: 0 });

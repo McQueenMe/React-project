@@ -32,8 +32,7 @@ function MyFormik() {
 
    }
 
-
-   // hook 
+   console.log(cart)
 
    const formik = useFormik({
       initialValues: {
@@ -81,129 +80,88 @@ function MyFormik() {
          return errors
       },
       onSubmit: (values, action) => {
-
          if (cart.length < 1) {
-            alert('Your cart is empthy')
-         } else {
-            const itemsRowsHTML = cart
-               .map((item) => {
-                  const coffeeData = coffee.find(c => c.id === Number(item.elId)) || {};
-                  const productName = coffeeData.name || `Coffee Product #${item.elId}`;
-                  const itemTotal = (Number(item.price) * item.count).toFixed(2);
+            alert('Your cart is empty!');
+            return;
+         }
 
-                  const imgSrc =
-                     item.elId === 1 ? "https://res.cloudinary.com/ldiul6b6/image/upload/v1794391599/lavazza1.png"
-                        : item.elId === 2 ? "https://res.cloudinary.com/ldiul6b6/image/upload/v1794391576/bonney1.png"
-                           : item.elId === 3 ? "https://res.cloudinary.com/ldiul6b6/image/upload/v1794391553/pul.png"
-                              : item.elId === 4 ? "https://res.cloudinary.com/ldiul6b6/image/upload/v1794391517/lavazza-blue.png"
-                                 : item.elId === 5 ? "https://res.cloudinary.com/ldiul6b6/image/upload/v1794391476/lavazza3-best1.png"
-                                    : item.elId === 6 ? "https://res.cloudinary.com/ldiul6b6/image/upload/f_auto,q_auto/product2"
-                                       : "";
+         const itemsRowsHTML = cart
+            .map((item) => {
+               const coffeeData = coffee.find(c => c.id === Number(item.elId)) || {};
+               const productName = coffeeData.name || `Coffee Product #${item.elId}`;
+               const itemTotal = (Number(item.price) * item.count).toFixed(2);
 
-                  const imgTagHTML = `
+               const imgSrc =
+                  item.elId === 1 ? "https://cloudinary.com"
+                     : item.elId === 2 ? "https://cloudinary.com"
+                        : item.elId === 3 ? "https://cloudinary.com"
+                           : item.elId === 4 ? "https://cloudinary.com"
+                              : item.elId === 5 ? "https://cloudinary.com"
+                                 : item.elId === 6 ? "https://cloudinary.com"
+                                    : "";
+
+               const imgTagHTML = `
                   <a href="#" target="_blank" style="text-decoration: none; display: block;">
                      <img src="${imgSrc}" alt="${productName}" width="50" style="display: block; width: 50px; max-width: 50px; height: auto; border-radius: 6px; border: 0;" />
                   </a>
                `;
 
-                  return `
-               <tr style="border-bottom: 1px solid #2a2a36;">
-                  <!-- 1. Картинка -->
-                  <td style="padding: 12px 0; width: 60px; text-align: left; vertical-align: middle;">
-                     ${imgTagHTML}
-                  </td>
-                  
-                  <!-- 2. Описание товара -->
-                  <td style="padding: 12px 8px; text-align: left; vertical-align: middle;">
-                     <div style="font-size: 15px; font-weight: 600; color: #ffffff; margin-bottom: 4px; line-height: 1.3;">
-                        ${productName}
-                     </div>
-                     <div style="font-size: 12px; color: #8892b0;">
-                        Size: <span style="color: wheat; font-weight: 500;">${item.size || 'std'}</span>
-                        <span style="color: #2a2a36; margin: 0 6px;">|</span>
-                        QTY: <span style="color: #ffffff; font-weight: 500;">${item.count}</span>
-                     </div>
-                  </td>
-                  
-                  <!-- 3. Цена -->
-                  <td style="padding: 12px 0; text-align: right; vertical-align: middle; width: 80px; font-size: 15px; font-weight: bold; color: wheat;">
-                     $${itemTotal}
-                  </td>
-               </tr>
+               return `
+                  <tr style="border-bottom: 1px solid #2a2a36;">
+                     <td style="padding: 12px 0; width: 60px; text-align: left; vertical-align: middle;">
+                        ${imgTagHTML}
+                     </td>
+                     <td style="padding: 12px 8px; text-align: left; vertical-align: middle;">
+                        <div style="font-size: 15px; font-weight: 600; color: #ffffff; margin-bottom: 4px; line-height: 1.3;">
+                           ${productName}
+                        </div>
+                        <div style="font-size: 12px; color: #8892b0;">
+                           Size: <span style="color: wheat; font-weight: 500;">${item.size || 'std'}</span>
+                           <span style="color: #2a2a36; margin: 0 6px;">|</span>
+                           QTY: <span style="color: #ffffff; font-weight: 500;">${item.count}</span>
+                        </div>
+                     </td>
+                     <td style="padding: 12px 0; text-align: right; vertical-align: middle; width: 80px; font-size: 15px; font-weight: bold; color: wheat;">
+                        $${itemTotal}
+                     </td>
+                  </tr>
                `;
-               })
-               .join('');
+            })
+            .join('');
 
-            const itemsListHTML = `
+         const itemsListHTML = `
             <table role="presentation" style="width: 100%; border-collapse: collapse;">
                ${itemsRowsHTML}
             </table>
          `;
 
+         const templateParams = {
+            order_id: Math.floor(100000 + Math.random() * 900000),
+            name: values.name,
+            email: values.email,
+            tel: values.tel,
+            city: values.city,
+            post: values.post,
+            method: isActiveButton === '1' ? 'Cash' : isActiveButton === '2' ? 'Card' : 'Apple Pay',
+            items_list: itemsListHTML,
+            total_price: `${summ.toFixed(2)} $`,
+         };
 
-            const templateParams = {
-               order_id: Math.floor(100000 + Math.random() * 900000),
-               name: values.name,
-               email: values.email,
-               tel: values.tel,
-               city: values.city,
-               post: values.post,
-               method: isActiveButton === '1' ? 'Cash' : isActiveButton === '2' ? 'Card' : 'Apple Pay',
-               items_list: itemsListHTML,
-               total_price: `${summ.toFixed(2)} $`,
-            };
+         emailjs.send('service_8emob99', 'template_mrb3o4f', templateParams, 'NRxrVAjx_RspJOjWw')
+            .then((response) => console.log('SUCCESS!', response.status))
+            .catch((err) => console.error('FAILED...', err));
 
-            emailjs.init('NRxrVAjx_RspJOjWw');
-
-            emailjs.send('service_8emob99', 'template_mrb3o4f', templateParams, 'NRxrVAjx_RspJOjWw')
-               .then((response) => {
-                  console.log('SUCCESS!', response.status, response.text);
-               })
-               .catch((err) => console.error('FAILED...', err));
-
-            action.resetForm();
-
-            console.log(formik);
-
-            setCart([]);
-         }
-
-
-
-      }
-
-
-   })
-
-
-   /*    const itemsListHTML = cart
-         .map((item) => {
-            const coffeeData =    coffee.find(c => c.id === Number(item.elId)) || {};
-   
-            console.log(coffeeData);
-   
-            const productName = coffeeData.name || `Coffee Product #${item.elId}`;
-            const itemTotal = (Number(item.price) * item.count).toFixed(2);
-   
-            const textForImg = encodeURIComponent(productName);
-   
-            let localImg = <img src={coffeeData.img}></img>;
-   
-            console.log(localImg)
-   
-            const imgUrl = localImg;
-         }) */
-
-
-   function showSucced() {
-      if ((cart.length) > 0 && (!formik.errors)) {
+         // Показываем модальное окно успеха, чистим корзину и localStorage
          setToast(true);
+         setCart([]);
+         localStorage.removeItem('Cart');
+         action.resetForm();
 
          setTimeout(() => {
             setToast(false);
          }, 5000);
       }
-   }
+   })
 
    console.log(formik)
 
@@ -375,7 +333,7 @@ function MyFormik() {
                         </button>
 
                      </div>
-                     <button type="submit" className="btn-submit btn-solid theme-primary justify-self-center" onClick={showSucced}>Buy</button>
+                     <button type="submit" className="btn-submit btn-solid theme-primary justify-self-center">Buy</button>
                   </div>
 
 

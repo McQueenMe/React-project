@@ -14,7 +14,7 @@ function Card({ element }) {
 
    const { cart, addToCard } = useContext(CartContext);
 
-
+   console.log(cart)
    const defaultSize = element.size[0];
 
    const productUrl = `/catalog/${element.name.toLowerCase().replace(/\s+/g, '-')}`;

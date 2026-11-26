@@ -11,7 +11,7 @@ function AboutPage() {
                <h1 className="about-hero__title">WE BREATHE COFFEE</h1>
                <p className="about-hero__subtitle">
                   COFFEEMEET — це пет-проект преміального інтернет-магазину, народжений з любові до гарної кави.
-                  та сучасних веб-технологій. Ми створили зручний інтерфейс для справжніх поціновувачів темної обсмажування.
+                  та сучасних веб-технологій. Я створив зручний інтерфейс для справжніх поціновувачів темної обсмажування.
                </p>
             </div>
          </section>
@@ -53,7 +53,7 @@ function AboutPage() {
             <div className="about-footer-block__content">
                <h2 className="about-footer-block__title">MADE WITH PASSION</h2>
                <p className="about-footer-block__text">
-                  Цей інтерфейс розроблено з використанням React, React Router, Context API та SASS.
+                  Цей інтерфейс розроблено з використанням React.
                   Кожен рядок коду написаний для того, щоб відтворити досвід реального e-commerce програми.
                </p>
             </div>
