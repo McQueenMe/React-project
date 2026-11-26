@@ -107,7 +107,7 @@ function ProductPage() {
                <div className="section-1__right-block right-block">
                   <div className="right-block__roast_country">
                      <div className="card__subtitle__type">{currentProduct.roast} </div>
-                     <h2 className="card__subtitle__type"> · </h2>
+                     <h2 className="card__subtitle__type nice"> · </h2>
                      <div className="card__subtitle__country">{currentProduct.origin}</div>
                   </div>
                   <h2 className="right-block__title">{currentProduct.name}</h2>

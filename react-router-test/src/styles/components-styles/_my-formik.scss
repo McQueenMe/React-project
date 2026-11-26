@@ -191,6 +191,7 @@
       font-family: $f-family;
       font-size: 20px;
       font-weight: 300;
+      align-items: center;
 
       &:active {
          border: 1px solid rgb(193, 178, 255);
@@ -218,7 +219,7 @@
    font-size: 30px;
    font-weight: 500;
    font-family: $f-family;
-   margin: 20px 0px 20px 0px;
+   margin: 20px 0px 0px 0px;
 }
 
 .total-price-title {
@@ -239,4 +240,241 @@
 
 .active-btn {
    border: 1px solid rgb(193, 178, 255);
+}
+
+@media (max-width: 1200px) {
+   .main-block__container {
+      padding: 0px 20px;
+   }
+
+   .form-container {
+      width: 50%;
+   }
+}
+
+@media (max-width: 800px) {
+   .main-block__container {
+      max-width: 100%;
+      display: flex;
+      flex-direction: column-reverse;
+      justify-content: center;
+      align-items: center;
+      padding-bottom: 30px;
+   }
+
+   .custom-form:last-child {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+   }
+
+   .form-container {
+      width: 100%;
+      margin: 0px 0px;
+   }
+
+   .main-block__container .card-block-formik {
+      width: 40%;
+   }
+
+   .card-block-formik {
+      min-width: 90%;
+   }
+
+   .payment {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+   }
+
+   .payment-block {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+   }
+}
+
+@media (max-width: 450px) {
+   .main-block__container {
+      display: flex;
+      flex-direction: column-reverse;
+      align-items: center;
+      padding: 0px 20px;
+      width: 100%;
+      padding-bottom: 50px;
+   }
+
+   .total-price-block {
+      font-size: 15px;
+   }
+   .total-price-title {
+      font-size: 25px;
+   }
+   .total-price__price {
+      font-size: 25px;
+   }
+
+   .form-container {
+      width: 100%;
+      margin: 0 auto;
+      margin-top: 10px;
+   }
+
+   .payment {
+      align-items: center;
+      display: flex;
+      flex-direction: row;
+      gap: 0.625rem;
+      height: 33%;
+
+      &__block {
+         padding: 5px 10px;
+      }
+   }
+
+   .btn-submit {
+      width: 100%;
+      align-items: center;
+      text-align: center;
+      font-size: 22px;
+   }
+
+   .main-block__container .card-block-formik {
+      margin: 20px 0px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      &__column {
+         margin: 0px;
+         width: 100%;
+         gap: 10px;
+      }
+   }
+
+   .block-top {
+      color: white;
+   }
+
+   .total-price-block {
+      width: 100%;
+      align-items: center;
+      justify-content: start;
+      text-align: start;
+   }
+
+   .justify-self-center {
+      align-items: center;
+      text-align: center;
+      font-size: 20px;
+      padding: 5px 20px;
+      width: 100%;
+   }
+
+   .payment-block {
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+   }
+
+   .card-block-formik__column .card-to-cart {
+      padding: 5px;
+   }
+
+   .block-top .block-top__title {
+      font-size: 15px;
+   }
+
+   .block-top .block-down__count {
+      font-size: 12px;
+   }
+
+   .block-top .block-down__h2 {
+      font-size: 12px;
+   }
+
+   .block-top .block-down__price {
+      font-size: 12px;
+   }
+
+   .block-top .block-down__size {
+      font-size: 12px;
+   }
+
+   .block-top .block-down__size-sum {
+      font-size: 12px;
+   }
+
+   .block-down__counter {
+      padding: 5px;
+   }
+
+   .counter__minus {
+      padding: 2px 5px;
+   }
+   .counter__plus {
+      padding: 2px 5px;
+   }
+
+   .card-to-cart__delete-btn {
+   }
+
+   .delete-btn__btn .trash {
+      text-align: center;
+
+      max-height: 20px;
+      max-width: 20px;
+   }
+
+   .block-down {
+      justify-content: center;
+      gap: 0px;
+   }
+   .total-price-block {
+      padding-bottom: 10px;
+      border-bottom: 2px solid $bg-cart-color;
+   }
+}
+
+@media (max-width: 350px) {
+   .card-to-cart__logo .img-logo-cart {
+      max-width: 60px;
+      max-height: 60px;
+   }
+   .card-to-cart-center {
+      gap: 5px;
+   }
+   .block-top {
+      gap: 5px !important;
+   }
+
+   .total-price-block {
+      width: 100%;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+   }
+
+   .form-container {
+      margin-top: 10px;
+   }
+
+   .payment__icon {
+      width: 60px;
+      height: 60px;
+   }
+
+   .payment-block {
+      justify-content: center;
+   }
+
+   .payment:last-child {
+      height: 40px;
+   }
+}
+
+@media (max-width: 480px) {
+   .payment {
+      gap: 0.625rem;
+   }
 }

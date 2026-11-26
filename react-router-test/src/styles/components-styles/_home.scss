@@ -4,16 +4,20 @@
    margin: 0 auto;
    max-width: 1200px;
    width: 100%;
+   @media (max-width: 400px) {
+      display: flex;
+      flex-direction: column;
+   }
 }
 //section 1 -----------------------------------------------------------------------------------
 
 .block-body {
    width: 100%;
    background-image: url("../../assets/back.png");
-   background-size: cover; // картинка заполняет весь блок, обрезаясь при необходимости
-   background-position: 50% 50%; // акцент картинки смещаем вправо, как на макете
-   background-repeat: no-repeat; // на макете указано 1920×712
-   min-height: 712px; // на макете указано 1920×712
+   background-size: cover;
+   background-position: 50% 50%;
+   background-repeat: no-repeat;
+   min-height: 712px;
 
    position: relative;
 
@@ -21,14 +25,12 @@
       content: "";
       position: absolute;
       inset: 0;
-      // градиент, а не сплошная заливка — слева темнее, справа прозрачнее,
-      // именно это создаёт эффект как на макете
       z-index: 1;
    }
 
    .body-container {
       position: relative;
-      z-index: 2; // выше и фона, и оверлея
+      z-index: 2;
       max-width: 1200px;
       margin: 0 auto;
 
@@ -87,8 +89,10 @@
 //section 2 -----------------------------------------------------------------------------------
 
 .second-section {
-   padding-top: 100px;
+   padding-top: 100px !important;
    background-color: black;
+   padding: 0px 20px;
+
    padding-bottom: 50px;
 
    .block-container {
@@ -138,6 +142,7 @@
 .catalog-block {
    background-color: black;
    padding-top: 50px;
+   border-top: none;
 
    .catalog-block {
       max-width: 1200px;
@@ -157,6 +162,8 @@
          flex-wrap: wrap;
          width: 100%;
          gap: 20px;
+         padding-bottom: 20px;
+         justify-content: center;
       }
    }
 
@@ -168,6 +175,35 @@
          font-family: $f-family;
          font-weight: 300;
          background-color: #fff;
+      }
+   }
+}
+
+.news-slider-box {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   width: 100%;
+   gap: 15px;
+
+   .news-arrow-btn {
+      flex-shrink: 0;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: #14141d;
+      color: #ffffff;
+      border: 1px solid #2a2a36;
+      font-size: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: 0.3s;
+
+      &:hover {
+         background-color: #c7a17a;
+         border-color: #c7a17a;
       }
    }
 }
@@ -234,16 +270,12 @@
    align-items: center;
 }
 
-// modal window
-
 .cart-toast {
-   // Позиционируем в правом нижнем углу поверх всего сайта
    position: fixed;
    top: 100px;
-   right: -350px; // Изначально прячем плашку полностью за правый край экрана
-   z-index: 1000; // Поднимаем выше всех элементов на странице
+   right: -350px;
+   z-index: 1000;
 
-   // Оформление в твоем деловом стиле
    background-color: #14141d;
    color: #ffffff;
    border: 1px solid #232330;
@@ -252,15 +284,173 @@
    font-size: 14px;
    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 
-   // Настройка плавной анимации движения и прозрачности
    opacity: 0;
    transition:
       right 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275),
       opacity 0.3s ease;
 
-   // Модификатор, который активируется через React
    &--visible {
-      right: 30px; // Выезжает на 30px от правого края
-      opacity: 1; // Становится полностью видимой
+      right: 30px;
+      opacity: 1;
+   }
+}
+
+//----------adaptive-----------------
+
+//----------adaptive-----------------
+
+@media (max-width: 1200px) {
+   .block-body {
+      padding: 0 20px;
+
+      .body-container .body-text-block .block-title {
+         font-size: 40px;
+      }
+   }
+
+   .catalog-block {
+      padding-left: 10px;
+      padding-right: 10px;
+   }
+}
+
+@media (max-width: 1100px) {
+   .catalog-block .catalog-block .catalog-cards-block {
+   }
+
+   .slider-viewport {
+      margin: 0 auto;
+   }
+}
+
+@media (max-width: 768px) {
+   .first-section {
+      max-height: none;
+   }
+
+   .block-body {
+      padding: 120px 20px 60px 20px;
+      min-height: auto;
+      max-height: none;
+
+      .body-container .body-text-block {
+         padding-top: 0;
+         width: 100%;
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+         text-align: center;
+
+         .block-title {
+            font-size: 32px;
+         }
+
+         .block-body-btns {
+            justify-content: center;
+            flex-wrap: wrap;
+         }
+      }
+   }
+
+   .second-section {
+      padding: 50px 20px 10px 20px;
+
+      .block-container {
+         flex-direction: column;
+         max-height: none;
+         height: auto;
+
+         .block-left {
+            width: 100%;
+
+            img {
+               width: 100%;
+               max-width: 100%;
+               height: auto;
+               display: block;
+               border-radius: 10px 10px 0 0;
+            }
+         }
+
+         .block-right {
+            width: 100%;
+            padding: 25px 20px;
+            border-radius: 0 0 10px 10px;
+
+            .block-right__title {
+               margin-top: 0;
+               font-size: 22px;
+            }
+
+            .block-right__subtitle {
+               margin-right: 0;
+               font-size: 16px;
+            }
+         }
+      }
+   }
+   .catalog-cards-block {
+      justify-content: center;
+      align-items: center;
+   }
+}
+
+@media (max-width: 450px) {
+   .catalog-cards-block {
+      display: flex;
+      justify-content: center;
+   }
+
+   .view-more {
+      align-items: center;
+      text-align: center;
+   }
+
+   .cart-block {
+      min-width: 100%;
+   }
+}
+
+@media (max-width: 400px) {
+   .block-body .body-container .body-text-block .block-title {
+      font-size: 26px;
+   }
+   .block-body .body-container .body-text-block .block-body-btns {
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+
+      .btn-left,
+      .btn-right {
+         width: 100%;
+      }
+   }
+
+   .four-section {
+      padding: 0px;
+   }
+
+   .catalog-block {
+      align-items: center;
+      text-align: center;
+   }
+
+   .catalog-block .catalog-block .catalog-cards-block {
+      display: flex;
+      width: 100%;
+      flex-direction: row;
+      flex-wrap: wrap;
+   }
+   .catalog-cards-block .card {
+      width: 80%;
+      margin: 0 auto;
+   }
+   .catalog-cards-block .card .card-logo .img-logo img {
+      width: 100px;
+      height: 100px;
+   }
+
+   .cart-block {
+      max-width: 100%;
    }
 }

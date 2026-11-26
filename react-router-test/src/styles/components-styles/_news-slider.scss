@@ -18,7 +18,7 @@
 }
 
 .slider-slide {
-   flex: 0 0 calc(100% / 3); // ровно треть видимой области на карточку
+   flex: 0 0 calc(100% / 3);
    padding: 0 12px;
    box-sizing: border-box;
 }
@@ -40,5 +40,53 @@
    &:hover {
       background: white;
       color: black;
+   }
+}
+
+.news-slider-box {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   width: 100%;
+   gap: 15px;
+
+   .news-cards-grid > div > * {
+      width: 100% !important;
+      max-width: 100% !important;
+      margin: 0 !important;
+   }
+
+   .news-arrow-btn {
+      flex-shrink: 0;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: #14141d;
+      color: #ffffff;
+      border: 1px solid #2a2a36;
+      font-size: 24px;
+      line-height: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+
+      &:hover {
+         background-color: #c7a17a;
+         border-color: #c7a17a;
+      }
+   }
+}
+
+@media (max-width: 480px) {
+   .news-slider-box {
+      gap: 8px;
+
+      .news-arrow-btn {
+         width: 32px;
+         height: 32px;
+         font-size: 20px;
+      }
    }
 }

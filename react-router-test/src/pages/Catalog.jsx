@@ -13,22 +13,20 @@ function CatalogPage() {
    ];
 
    const [sortBy, setSortBy] = useState('price-asc');
-   const [searchTerm, setSearchTerm] = useState(''); // Стейт для текста в инпуте
+   const [searchTerm, setSearchTerm] = useState('');
+   const [isFilterOpen, setIsFilterOpen] = useState(false);
 
-   // Стейт для выбранных кнопками опций
    const [options, setOptions] = useState(() => {
       localStorage.getItem('filter-values')
       const saved = localStorage.getItem('filter-values');
       return saved ? JSON.parse(saved) : { roast: [], origin: [], size: [], price_start: [], price_end: [] };
    });
 
-   // Стейт для отображения галочек в чекбоксах
    const [filtersData, setFiltersData] = useState(() => {
       const saved = localStorage.getItem('filters-data');
       return saved ? JSON.parse(saved) : FILTERDATA;
    });
 
-   // Синхронизация с LocalStorage
    useEffect(() => {
       localStorage.setItem('filter-values', JSON.stringify(options));
    }, [options]);
@@ -82,7 +80,6 @@ function CatalogPage() {
          let optionLocal = e.target.id;
          console.log(optionLocal)
 
-         // 1. Обновляем визуальные чекбоксы
          let localFiltersDataArray = structuredClone(filtersData);
          localFiltersDataArray.forEach((el) => {
             if (el.text.includes(optionLocal)) {
@@ -92,7 +89,6 @@ function CatalogPage() {
          });
          setFiltersData(localFiltersDataArray);
 
-         // 2. Обновляем выбранные категории в options
          let localOptions = structuredClone(options);
          let category = '';
          if (optionLocal.includes('roast')) {
@@ -117,8 +113,9 @@ function CatalogPage() {
 
    }
 
+
    function clearAllFilters() {
-      setSearchTerm(''); // 
+      setSearchTerm('');
       setOptions({ roast: [], origin: [], size: [], price_start: 0, price_end: 0 });
       setFiltersData(FILTERDATA);
    }
@@ -187,6 +184,12 @@ function CatalogPage() {
                />
             </div>
             <div className="catalog__toolbar-right">
+               <button
+                  className="catalog__filter-toggle  display-none"
+                  onClick={() => setIsFilterOpen(true)}
+               >
+                  Filters
+               </button>
                <div className="catalog__count">
                   {filteredCoffeeProducts.length} products
                </div>
@@ -195,7 +198,22 @@ function CatalogPage() {
          </section>
 
          <section className="catalog__filters _container">
-            <div className="catalog__filters-inner">
+            <div
+               className={`catalog__overlay ${isFilterOpen ? 'is-open' : ''}`}
+               onClick={() => setIsFilterOpen(false)}
+            />
+
+            <div className={`catalog__filters-inner  ${isFilterOpen ? 'is-open' : ''}`}>
+               <div className="catalog__filters-header  display-none">
+                  <span>FILTERS</span>
+                  <button
+                     className="catalog__close-btn"
+                     onClick={() => setIsFilterOpen(false)}
+                  >
+                     ✕
+                  </button>
+               </div>
+
                {filtersData.map((el) => (
                   <RightFilterCard key={el.id} element={el} addOptions={addOptions} />
                ))}
@@ -222,7 +240,6 @@ function CatalogPage() {
                      <Card key={el.name} element={el} />
                   ))}
                </div>
-
             </div>
          </section>
       </div>

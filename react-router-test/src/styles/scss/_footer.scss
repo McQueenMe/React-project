@@ -13,6 +13,9 @@
       display: flex;
       flex-direction: row;
       justify-content: space-between;
+      position: sticky;
+      bottom: 0;
+      left: 0;
 
       .footer-left {
          display: flex;
@@ -97,8 +100,23 @@
       }
    }
 }
+.main-block {
+   display: flex;
+   flex-direction: column;
+   min-height: 100dvh;
+   background-color: #12121a;
+}
 
-// например, в _navigation.scss (и подключить через @use в main.scss)
+main.margin-bottom {
+   flex: 1 0 auto;
+   display: flex;
+   flex-direction: column;
+}
+
+main.margin-bottom > * {
+   flex: 1;
+}
+
 /* .left-menu {
    display: flex;
    gap: 24px;
@@ -112,3 +130,51 @@
       }
    }
 } */
+
+@media (max-width: 850px) {
+   .footer-block {
+   }
+   .footer-left .img-logo {
+      width: 50px;
+      height: 50px;
+   }
+   .fot-container .footer-block .footer-left .footer-text {
+      font-size: 12px;
+   }
+
+   .fot-container .footer-block .footer-menu .left-menu .links a {
+      font-size: 12px;
+   }
+
+   .footer-right a {
+      font-size: 12px;
+   }
+}
+
+@media (max-width: 400px) {
+   .fot-container .footer-block .footer-left {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      justify-content: center;
+      margin-bottom: 10px;
+   }
+
+   .fot-container .footer-block .footer-menu .left-menu {
+      padding-top: 0px;
+      padding-bottom: 0px;
+      margin: 10px opx;
+   }
+
+   .left-menu {
+   }
+
+   .fot-container .footer-block .footer-menu .left-menu .links a {
+      font-size: 14px;
+   }
+
+   .footer-right a {
+      font-size: 14px;
+   }
+}

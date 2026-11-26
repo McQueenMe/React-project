@@ -70,7 +70,7 @@ function RootPage() {
 
 
    return (
-      <div>
+      <div className='main-block'>
          <CartContext.Provider value={{ cart, setCart, addToCard, deleteProduct }}>
             <Header />
             <div className={`cart-toast ${showToast ? 'cart-toast--visible' : ''}`}>

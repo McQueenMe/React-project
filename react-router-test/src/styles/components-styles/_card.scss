@@ -29,6 +29,13 @@
       }
    }
 
+   @media (max-width: 400px) {
+      .img-logo {
+         max-width: 150px;
+         max-height: 150px;
+      }
+   }
+
    .card__title {
       font-size: 22px;
       font-weight: 600;

@@ -101,7 +101,7 @@ function HomePage() {
                      ROASTED COFFEE
                   </div>
                   <div className="block-right__subtitle">
-                     There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet.
+                     We carefully select the finest coffee beans from around the world to bring you an impeccable taste in every cup. Our secret lies in professional roasting, which fully unlocks the unique aroma, natural sweetness, and rich flavor profile of each variety. Experience true energy and inspiration from the very first sip of our exceptional coffee.
                   </div>
                </div>
             </div>
@@ -131,15 +131,17 @@ function HomePage() {
                <div className='catalog__title'>
                   NEWS
                </div>
-               <div className="catalog-cards-block not-found">
-                  <div className="news-slider-wrapper">
-                     {news.length === 0 && (<div className="not-found">
+               <div className="catalog-cards-block">
+                  {news.length === 0 ? (
+                     <div className="not-found">
                         <div className="loader"></div>
-                        <div className='title'>Loading news...</div>
-                     </div>)}
+                        <div className="title">Loading news...</div>
+                     </div>
+                  ) : (
                      <NewsSlider news={news} />
-                  </div>
+                  )}
                </div>
+
 
             </div>
          </section>

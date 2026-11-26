@@ -18,6 +18,7 @@ function CardToCart({ cartElement }) {
    const [cartEl, setCartEl] = useState(cartElement.count);
    const { cart, setCart, deleteProduct } = useContext(CartContext);
 
+   console.log(cart)
 
    let id = cartElement.elId - 1;
    let elId = cartElement.elId;
