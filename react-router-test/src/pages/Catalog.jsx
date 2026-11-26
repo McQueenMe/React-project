@@ -163,6 +163,8 @@ function CatalogPage() {
       return 0;
    });
 
+   console.log(isFilterOpen)
+
 
    return (
       <div className="catalog">
