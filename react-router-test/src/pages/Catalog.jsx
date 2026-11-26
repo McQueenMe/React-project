@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import SortDropdown from '../components/sortDropdown';
 import Card from '../components/card';
 import { coffee } from '../data/coffee-obj';
 import FilterCards from '../components/filterCards';

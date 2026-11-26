@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import NewsCard from './NewsCard';
+import NewsCard from './newsCard';
 
 function NewsSlider({ news }) {
    const [currentIndex, setCurrentIndex] = useState(0);
