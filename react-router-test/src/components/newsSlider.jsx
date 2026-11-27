@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import NewsCard from './newsCard';
 
+
 function NewsSlider({ news }) {
    const [currentIndex, setCurrentIndex] = useState(0);
    const [cardsPerView, setCardsPerView] = useState(3);
@@ -9,11 +10,11 @@ function NewsSlider({ news }) {
    useEffect(() => {
       const handleResize = () => {
          if (window.innerWidth <= 650) {
-            setCardsPerView(1); // Телефоны — 1 карточка
+            setCardsPerView(1);
          } else if (window.innerWidth <= 992) {
-            setCardsPerView(2); // Планшеты — 2 карточки
+            setCardsPerView(2);
          } else {
-            setCardsPerView(3); // Компьютеры — 3 карточки
+            setCardsPerView(3);
          }
       };
 
