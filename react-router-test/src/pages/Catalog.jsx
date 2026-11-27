@@ -19,7 +19,7 @@ function CatalogPage() {
    const [options, setOptions] = useState(() => {
       localStorage.getItem('filter-values')
       const saved = localStorage.getItem('filter-values');
-      return saved ? JSON.parse(saved) : { roast: [], origin: [], size: [], price_start: [], price_end: [] };
+      return saved ? JSON.parse(saved) : { roast: [], origin: [], size: [], price_start: 0, price_end: 0 };
    });
 
    const [filtersData, setFiltersData] = useState(() => {
