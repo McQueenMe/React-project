@@ -92,12 +92,12 @@ function MyFormik() {
                const itemTotal = (Number(item.price) * item.count).toFixed(2);
 
                const imgSrc =
-                  item.elId === 1 ? "https://cloudinary.com"
-                     : item.elId === 2 ? "https://cloudinary.com"
-                        : item.elId === 3 ? "https://cloudinary.com"
-                           : item.elId === 4 ? "https://cloudinary.com"
-                              : item.elId === 5 ? "https://cloudinary.com"
-                                 : item.elId === 6 ? "https://cloudinary.com"
+                  item.elId === 1 ? "https://res.cloudinary.com/ldiul6b6/image/upload/v1794391599/lavazza1.png"
+                     : item.elId === 2 ? "https://res.cloudinary.com/ldiul6b6/image/upload/v1794391576/bonney1.png"
+                        : item.elId === 3 ? "https://res.cloudinary.com/ldiul6b6/image/upload/v1794391553/pul.png"
+                           : item.elId === 4 ? "https://res.cloudinary.com/ldiul6b6/image/upload/v1794391517/lavazza-blue.png"
+                              : item.elId === 5 ? "https://res.cloudinary.com/ldiul6b6/image/upload/v1794391476/lavazza3-best1.png"
+                                 : item.elId === 6 ? "https://res.cloudinary.com/ldiul6b6/image/upload/v1794391350/product2.png"
                                     : "";
 
                const imgTagHTML = `
@@ -151,7 +151,6 @@ function MyFormik() {
             .then((response) => console.log('SUCCESS!', response.status))
             .catch((err) => console.error('FAILED...', err));
 
-         // Показываем модальное окно успеха, чистим корзину и localStorage
          setToast(true);
          setCart([]);
          localStorage.removeItem('Cart');

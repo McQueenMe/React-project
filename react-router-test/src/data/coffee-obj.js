@@ -112,7 +112,7 @@ export const coffee = [
    },
    {
       id: 4,
-      name: 'Lavazza Red',
+      name: 'Lavazza Dark',
       img: lavJng,
       origin: 'Italy',
       roast: 'Medium roast',
